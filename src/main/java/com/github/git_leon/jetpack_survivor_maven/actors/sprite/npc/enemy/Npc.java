@@ -2,7 +2,6 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteDestroyer;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.NPCInterface;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
