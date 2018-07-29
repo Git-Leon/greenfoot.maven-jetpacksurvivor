@@ -11,7 +11,7 @@ public class JfootSound extends GreenfootSound {
     public JfootSound(String filename) {
         super(filename);
         this.filename = filename;
-        this.clip = null; //ResourceORM.SOUNDS.getClip(filename);
+        this.clip = null; //Resources.SOUNDS.getClip(filename);
     }
 
 
