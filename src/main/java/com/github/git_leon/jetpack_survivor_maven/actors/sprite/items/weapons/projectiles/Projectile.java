@@ -1,19 +1,18 @@
-package com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles;
+package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.NPCInterface;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.NPCInterface;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteDestroyer;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
-import com.github.git_leon.jetpack_survivor_maven.actors.items.Loot;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 
 public class Projectile extends Sprite {
     private final SpriteDestroyer spriteDestoyer;
-    private final SpriteSensorDecorator spriteSensor;
     private int speed;
     private Class enemy;
     public static int lootchance;
@@ -24,10 +23,10 @@ public class Projectile extends Sprite {
     }
 
     public Projectile(int speed, Class<? extends NPCInterface> cls) {
+        super("ant.png");
         this.speed = speed;
         this.enemy = cls;
         this.spriteDestoyer = new SpriteDestroyer(this.getWorld());
-        this.spriteSensor = new SpriteSensorDecorator(this);
     }
 
 
@@ -72,7 +71,7 @@ public class Projectile extends Sprite {
                 }
             }
         }, getX(), getY());
-        Greenfoot.playSound("vaporize.mp3");
+//        Greenfoot.playSound("vaporize.mp3");
         spriteDestoyer.destroy(this);
     }
 

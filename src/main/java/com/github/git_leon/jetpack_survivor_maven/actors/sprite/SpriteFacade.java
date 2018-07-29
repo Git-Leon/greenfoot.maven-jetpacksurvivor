@@ -45,8 +45,9 @@ public class SpriteFacade implements SpriteWrapper  {
         sprite.setLocation(x, y);
     }
 
+    @Override
     public SpriteWorld getWorld() {
-        return this.getWorld();
+        return sprite.getWorld();
     }
 
     @Override

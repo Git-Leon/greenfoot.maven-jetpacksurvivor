@@ -1,16 +1,17 @@
 package com.github.git_leon.jetpack_survivor_maven.actors;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import com.github.git_leon.jetpack_survivor_maven.actors.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Partner;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.worlds.SubWorld;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
-import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 
 import java.util.List;
 /**
  * adds functionality to Actor class
  */
+@Deprecated
 public class SubActor extends Actor{
     private long birth = System.currentTimeMillis();
     public int health = 1;

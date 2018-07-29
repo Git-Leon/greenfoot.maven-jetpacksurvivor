@@ -1,6 +1,6 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.userinterface;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 

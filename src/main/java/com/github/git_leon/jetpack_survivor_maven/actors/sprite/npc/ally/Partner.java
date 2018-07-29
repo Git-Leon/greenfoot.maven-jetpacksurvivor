@@ -1,8 +1,8 @@
-package com.github.git_leon.jetpack_survivor_maven.actors.npc.ally;
+package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Npc;
-import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.resources.Resources;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
@@ -15,30 +15,29 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public class Partner extends Npc {
+    private Player player = Player.INSTANCE;
     public Partner() {
-        setAnimation(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);
+        super(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);
     }
 
     public void act() {
         animate(6);
         try {
-            Player p = getPlayer();
-            setLocation(getX(p)-50, getY(p)-75);
+
+            setLocation(player.getX()-50, player.getY()-75);
             if(Util.keyDown("q") )
-                shot(p.bulletspeed * 3);
+                shot(player.bulletspeed * 3);
         } catch(NullPointerException npe) {} catch(IllegalStateException ise) {}
     }
 
     private void followPlayer() {
-        Player p = getPlayer();
-        setLocation(getX(p)-50, getY(p)-75);
+        setLocation(player.getX()-50, player.getY()-75);
     }
 
     public void shot(int speed) {
-        Player p = getPlayer();
-        Projectile bullet = p.fire(speed).setSpeed(speed);
+        Projectile bullet = player.fire(speed).setSpeed(speed);
         bullet.setLocation(getX(), getY());
-        List<Enemy> list = getObjects(Enemy.class);
+        List<Enemy> list = player.getObjects(Enemy.class);
         int index = Util.ran(2) == 1 ? list.size()-1 : 0;
         bullet.faceObject(list.get(index));
     }
