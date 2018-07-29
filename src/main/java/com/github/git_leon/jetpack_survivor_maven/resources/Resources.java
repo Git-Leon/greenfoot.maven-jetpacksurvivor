@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ResourceORM {
+public enum Resources {
     IMAGES("images/"),
     SOUNDS("sounds/");
 
@@ -24,7 +24,7 @@ public enum ResourceORM {
     private Map<String, GreenfootImage> imageMap = new HashMap<>();
     private Map<String, MediaPlayer> mediaPlayerMap = new HashMap<>();
 
-    ResourceORM(String directoryPath) {
+    Resources(String directoryPath) {
         String resourceDirectory = System.getProperty("user.dir") + "/src/main/resources/";
         this.directory = new File(resourceDirectory + directoryPath);
         if (!directory.isDirectory()) {
@@ -76,6 +76,7 @@ public enum ResourceORM {
         return new GreenfootImage(imageName);
     }
 
+    @Deprecated
     public GreenfootSound getSound(String soundName) {
         soundName = getResourceFile(soundName).toString();
 

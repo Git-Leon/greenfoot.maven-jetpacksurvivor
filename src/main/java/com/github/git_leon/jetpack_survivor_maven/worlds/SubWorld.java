@@ -12,7 +12,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
 import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.SOUNDS;
 
 public class SubWorld extends World {
     Partner partner = null;
@@ -98,7 +98,7 @@ public class SubWorld extends World {
     private void classic() {
         makeGround();
         Projectile.lootchance = 66;
-        this.player = new Player();
+        this.player = Player.INSTANCE;
         this.partner = new Partner();
         addObject(player, 174, 50);
         addObject(partner, getX(player) - 50, getY(player) + 100);

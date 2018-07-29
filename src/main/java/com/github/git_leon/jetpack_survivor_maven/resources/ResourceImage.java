@@ -2,7 +2,12 @@ package com.github.git_leon.jetpack_survivor_maven.resources;
 
 import greenfoot.GreenfootImage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ResourceImage extends GreenfootImage {
+    private static final Map<String, GreenfootImage> imageMap = new HashMap<>();
+
     public ResourceImage(String filename) throws IllegalArgumentException {
         super(filename);
     }
@@ -14,4 +19,5 @@ public class ResourceImage extends GreenfootImage {
     public ResourceImage(GreenfootImage image) throws IllegalArgumentException {
         super(image);
     }
+
 }

@@ -14,6 +14,8 @@ import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectil
 import java.util.ArrayList;
 
 public class Player extends SubActor {
+    public static final Player INSTANCE = new Player();
+
     public int shotdelay, firerate, magsize, thrust, fuel,
     jumpstrength, bulletspeed, runspeed, kills = 0;
     private ArrayList<CoolDown> coolDowns = new ArrayList<CoolDown>();
@@ -35,7 +37,7 @@ public class Player extends SubActor {
         init(shotdelay, firerate, magsize, thrust, fuel, jumpstrength, bulletspeed, runspeed);
     }
 
-    public Player() {
+    private Player() {
         super("player/walk/walk", ".png", 6);
         for(GreenfootImage image : getImages())
             image.mirrorHorizontally();
@@ -182,7 +184,7 @@ public class Player extends SubActor {
                 else{
                     getImage().mirrorHorizontally();
                 }
-                Greenfoot.playSound("shot1.mp3");
+//                Greenfoot.playSound("shot1.mp3");
                 return shoot(bulletspeed);
         }
         return null;
@@ -191,4 +193,5 @@ public class Player extends SubActor {
     private void fall() {
         fall(1, 7);
     }
+
 }

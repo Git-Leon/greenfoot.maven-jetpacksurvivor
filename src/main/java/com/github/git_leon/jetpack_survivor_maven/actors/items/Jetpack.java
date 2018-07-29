@@ -3,10 +3,9 @@ package com.github.git_leon.jetpack_survivor_maven.actors.items;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
-import javafx.scene.media.MediaPlayer;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM.IMAGES;
-import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.IMAGES;
+import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.SOUNDS;
 
 public class Jetpack extends SubActor {
     private String type;
