@@ -5,13 +5,12 @@ import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 import javafx.scene.media.MediaPlayer;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceDirectory.IMAGES;
-import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceDirectory.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM.IMAGES;
+import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM.SOUNDS;
 
 public class Jetpack extends SubActor {
     private String type;
-    private GreenfootSound gss = SOUNDS.getSound("jetpack, rocket, acceleration.mp3");
-    private MediaPlayer gs = SOUNDS.getMediPlayer("jetpack, rocket, acceleration.mp3");
+    private GreenfootSound gs = SOUNDS.getSound("jetpack, rocket, acceleration.mp3");
 
     public Jetpack() {     
         this.type = "jetpack";
@@ -25,11 +24,11 @@ public class Jetpack extends SubActor {
     private void jetpack() {
         if(is("jetpack")) {
             setImage(IMAGES.getImage("rocket.png"));
-            gs.play();
+//            gs.play();
             shadow(getPlayer());
             if(!Util.keyDown("e")) {
-                gs.stop();
-                gs.setVolume(0);
+//                gs.stop();
+//                gs.setVolume(0);
 //                gs = null;
                 //Greenfoot.playSound("jetpack, whine, pitch, descends.mp3");
                 kill(this);

@@ -1,6 +1,5 @@
 package com.github.git_leon.jetpack_survivor_maven.utils;
 
-import com.github.git_leon.jetpack_survivor_maven.resources.ResourceDirectory;
 import greenfoot.GreenfootSound;
 
 import javax.sound.sampled.Clip;
@@ -12,7 +11,7 @@ public class JfootSound extends GreenfootSound {
     public JfootSound(String filename) {
         super(filename);
         this.filename = filename;
-        this.clip = ResourceDirectory.SOUNDS.getClip(filename);
+        this.clip = null; //ResourceORM.SOUNDS.getClip(filename);
     }
 
 

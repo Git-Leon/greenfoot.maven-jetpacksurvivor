@@ -5,7 +5,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Partner;
 import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.worlds.SubWorld;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
-import com.github.git_leon.jetpack_survivor_maven.actors.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
 
 import java.util.List;
 /**

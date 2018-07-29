@@ -2,8 +2,8 @@ package com.github.git_leon.jetpack_survivor_maven.actors.npc.ally;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Npc;
-import com.github.git_leon.jetpack_survivor_maven.actors.weapons.projectiles.Projectile;
-import com.github.git_leon.jetpack_survivor_maven.resources.ResourceDirectory;
+import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
 /**
@@ -14,7 +14,7 @@ import com.github.git_leon.jetpack_survivor_maven.utils.Util;
  */
 public class Partner extends Npc {
     public Partner() {
-        setAnimation(ResourceDirectory.IMAGES.toString() + "npc/partner1/", ".png", 7);
+        setAnimation(ResourceORM.IMAGES.toString() + "npc/partner1/", ".png", 7);
     }
 
     public void act() {

@@ -9,10 +9,10 @@ import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Partner;
 import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Npc;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
-import com.github.git_leon.jetpack_survivor_maven.actors.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceDirectory.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.resources.ResourceORM.SOUNDS;
 
 public class SubWorld extends World {
     Partner partner = null;

@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ResourceDirectory {
+public enum ResourceORM {
     IMAGES("images/"),
     SOUNDS("sounds/");
 
@@ -24,7 +24,7 @@ public enum ResourceDirectory {
     private Map<String, GreenfootImage> imageMap = new HashMap<>();
     private Map<String, MediaPlayer> mediaPlayerMap = new HashMap<>();
 
-    ResourceDirectory(String directoryPath) {
+    ResourceORM(String directoryPath) {
         String resourceDirectory = System.getProperty("user.dir") + "/src/main/resources/";
         this.directory = new File(resourceDirectory + directoryPath);
         if (!directory.isDirectory()) {
@@ -32,8 +32,8 @@ public enum ResourceDirectory {
         }
     }
 
-    public File getFile(String imageName) {
-        File file = new File(toString() + imageName);
+    public File getResourceFile(String imageName) {
+        File file = new File(toString(imageName));
         if (!file.exists()) {
             String errorMessage = "Failed to find file with name [ %s ]";
             Throwable cause = new FileNotFoundException();
@@ -46,7 +46,7 @@ public enum ResourceDirectory {
         Clip clip;
         try {
             clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(getFile(fileName)));
+            clip.open(AudioSystem.getAudioInputStream(new File(fileName)));
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             throw new JFootError(e);
         }
@@ -55,7 +55,7 @@ public enum ResourceDirectory {
 
     @Deprecated
     public MediaPlayer getMediPlayer(String fileName) {
-        File mediaFile = getFile(fileName);
+        File mediaFile = getResourceFile(fileName);
 
         if (!mediaPlayerMap.containsKey(fileName)) {
             File file = new File(toString() + fileName);
@@ -68,21 +68,25 @@ public enum ResourceDirectory {
     }
 
     public GreenfootImage getImage(String imageName) {
-        imageName = getFile(imageName).toString();
+        imageName = getResourceFile(imageName).toString();
 
         if (imageMap.containsKey(imageName)) {
             return imageMap.get(imageName);
         }
-        return new GreenfootImage(toString() + imageName);
+        return new GreenfootImage(imageName);
     }
 
     public GreenfootSound getSound(String soundName) {
-        soundName = getFile(soundName).toString();
+        soundName = getResourceFile(soundName).toString();
 
         if (soundMap.containsKey(soundName)) {
             return soundMap.get(soundName);
         }
-        return new JfootSound(toString() + soundName);
+        return new JfootSound(soundName);
+    }
+
+    public String toString(String fileName) {
+        return toString() + fileName;
     }
 
     public File getDirectory() {
@@ -91,7 +95,6 @@ public enum ResourceDirectory {
 
     @Override
     public String toString() {
-        System.out.println(directory);
         return directory.getAbsolutePath() + "/";
     }
 }
