@@ -1,20 +1,21 @@
 package com.github.git_leon.jetpack_survivor_maven.worlds;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.items.Jetpack;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.EnemyGenerator;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import com.github.git_leon.jetpack_survivor_maven.actors.items.Loot;
-import com.github.git_leon.jetpack_survivor_maven.actors.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.ally.Partner;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.npc.enemy.Npc;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
-import com.github.git_leon.jetpack_survivor_maven.actors.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
 
-public class SubWorld extends World {
+public class SubWorld extends SpriteWorld {
     Partner partner = null;
     Player player = null;
     private long birth = System.currentTimeMillis();
@@ -145,7 +146,7 @@ public class SubWorld extends World {
     private void addEnemy(int num) {
         boolean b = count(Enemy.class) < (Menu.score / 10) + 1;
         if (b)
-            addObject(new Enemy(), getWidth() - 50, 50);
+            addObject(EnemyGenerator.getRandom(), getWidth() - 50, 50);
     }
 
     public SubWorld getCurrentWorld() {

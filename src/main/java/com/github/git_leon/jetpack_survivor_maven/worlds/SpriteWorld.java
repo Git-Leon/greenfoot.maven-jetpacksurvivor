@@ -1,12 +1,11 @@
 package com.github.git_leon.jetpack_survivor_maven.worlds;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
-import greenfoot.Actor;
 import greenfoot.World;
 
 import java.util.List;
 
-public class SpriteWorld extends World {
+public abstract class SpriteWorld extends World {
     public SpriteWorld(int worldWidth, int worldHeight, int cellSize) {
         super(worldWidth, worldHeight, cellSize);
     }

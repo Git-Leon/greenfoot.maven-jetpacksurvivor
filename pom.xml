@@ -13,9 +13,32 @@
             <id>k40s-public</id>
             <url>https://nexus.k40s.net/repository/maven-public/</url>
         </repository>
+
+        <repository>
+            <id>git-leon-utils</id>
+            <url>https://packagecloud.io/git-leon/utils/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
+
+
+
+
+
+
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.greenfoot</groupId>
             <artifactId>greenfoot</artifactId>
@@ -26,7 +49,33 @@
             <artifactId>bluej-core</artifactId>
             <version>4.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>randomutils</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>stringutils</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>introspection</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>collectionutils</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
+
+
+
+
+
 
     <build>
         <plugins>

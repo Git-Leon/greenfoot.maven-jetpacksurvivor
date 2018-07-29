@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 
 public class SpriteDestroyer {
     private final SpriteWorld spriteWorld;
-    private SpriteFacade spriteFacade;
 
     public SpriteDestroyer(SpriteWorld spriteWorld) {
         this.spriteWorld = spriteWorld;
