@@ -1,6 +1,5 @@
 package com.github.git_leon.jetpack_survivor_maven.system;
 
-import java.util.Map;
 import java.util.Properties;
 
 public class JFProperty {
@@ -26,11 +25,19 @@ public class JFProperty {
         return this;
     }
 
+    public void set(Properties properties) {
+        set(properties.getProperty(toString()));
+    }
+
     public JFootPropertyType getPropertyType() {
         return propertyType;
     }
 
-    public Map<?, ?> getProperty() {
+    public Properties getProperties() {
         return properties;
+    }
+
+    public String toString() {
+        return getPropertyType().toString();
     }
 }

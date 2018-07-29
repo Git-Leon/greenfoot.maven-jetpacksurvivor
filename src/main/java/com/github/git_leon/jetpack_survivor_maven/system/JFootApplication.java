@@ -27,7 +27,7 @@ public class JFootApplication {
 
     public void run() {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
-        System.setProperty("com.apple.mrj.application.apple.menu.about.name", properties.getProperty(JFootPropertyType.PROJECT_NAME).toString());
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", properties.PROJECT_NAME.get());
 
         final GreenfootScenarioViewer[] gsv = new GreenfootScenarioViewer[1];
         final JFrame[] frame = new JFrame[1];
