@@ -13,7 +13,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
 
 public class SubWorld extends SpriteWorld {
     Partner partner = null;

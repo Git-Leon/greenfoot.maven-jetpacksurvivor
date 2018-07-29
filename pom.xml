@@ -48,6 +48,22 @@
             <artifactId>randomutils</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>stringutils</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>introspection</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 

@@ -1,4 +1,4 @@
-package com.github.git_leon.jetpack_survivor_maven.resources;
+package com.github.git_leon.jetpack_survivor_maven.system.resources;
 
 import com.github.git_leon.jetpack_survivor_maven.utils.JfootSound;
 import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Resources {
+    ROOT(""),
     IMAGES("images/"),
     SOUNDS("sounds/");
 
@@ -42,30 +43,6 @@ public enum Resources {
         return file;
     }
 
-    public Clip getClip(String fileName) {
-        Clip clip;
-        try {
-            clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(new File(fileName)));
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            throw new JFootError(e);
-        }
-        return clip;
-    }
-
-    @Deprecated
-    public MediaPlayer getMediPlayer(String fileName) {
-        File mediaFile = getResourceFile(fileName);
-
-        if (!mediaPlayerMap.containsKey(fileName)) {
-            File file = new File(toString() + fileName);
-            URI uri = file.toURI();
-            Media media = new Media(uri.toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayerMap.put(fileName, mediaPlayer);
-        }
-        return mediaPlayerMap.get(fileName);
-    }
 
     public GreenfootImage getImage(String imageName) {
         imageName = getResourceFile(imageName).toString();
@@ -75,6 +52,8 @@ public enum Resources {
         }
         return new GreenfootImage(imageName);
     }
+
+
 
     @Deprecated
     public GreenfootSound getSound(String soundName) {
@@ -86,12 +65,32 @@ public enum Resources {
         return new JfootSound(soundName);
     }
 
-    public String toString(String fileName) {
-        return toString() + fileName;
+    @Deprecated
+    public MediaPlayer getMediPlayer(String fileName) {
+        if (!mediaPlayerMap.containsKey(fileName)) {
+            File file = new File(toString() + fileName);
+            URI uri = file.toURI();
+            Media media = new Media(uri.toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayerMap.put(fileName, mediaPlayer);
+        }
+        return mediaPlayerMap.get(fileName);
     }
 
-    public File getDirectory() {
-        return directory;
+    @Deprecated
+    public Clip getClip(String fileName) {
+        Clip clip;
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File(fileName)));
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            throw new JFootError(e);
+        }
+        return clip;
+    }
+
+    public String toString(String fileName) {
+        return toString() + fileName;
     }
 
     @Override

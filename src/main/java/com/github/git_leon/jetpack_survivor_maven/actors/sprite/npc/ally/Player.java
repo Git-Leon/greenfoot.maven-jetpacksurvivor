@@ -2,7 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.CoolDown;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
-import com.github.git_leon.jetpack_survivor_maven.resources.Resources;
+import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;

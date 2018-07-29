@@ -4,8 +4,8 @@ import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
-import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.IMAGES;
-import static com.github.git_leon.jetpack_survivor_maven.resources.Resources.SOUNDS;
+import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.IMAGES;
+import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
 
 public class Jetpack extends SubActor {
     private String type;

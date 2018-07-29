@@ -1,12 +1,21 @@
 package com.github.git_leon.jetpack_survivor_maven;
 
-import greenfoot.export.GreenfootScenarioMain;
+import com.github.git_leon.jetpack_survivor_maven.system.JFootApplication;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * @author Lukas Fülling (lukas@k40s.net)
  */
-public class DemoApp extends GreenfootScenarioMain {
+public class DemoApp   {
     public static void main(String[] args) {
-        GreenfootScenarioMain.main(args);
+        System.out.println(Arrays.toString(args));
+        MockGreenfootRunner.main(args);
+        try {
+            new JFootApplication(args).run();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

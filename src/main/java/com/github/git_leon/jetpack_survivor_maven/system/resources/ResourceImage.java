@@ -1,4 +1,4 @@
-package com.github.git_leon.jetpack_survivor_maven.resources;
+package com.github.git_leon.jetpack_survivor_maven.system.resources;
 
 import greenfoot.GreenfootImage;
 
