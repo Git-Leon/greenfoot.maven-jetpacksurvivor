@@ -54,7 +54,7 @@ public class SubWorld extends SpriteWorld {
     }
 
     public void act() {
-        addEnemy(0);
+//        addEnemy(0);
     }
 
     public Player getPlayer() {

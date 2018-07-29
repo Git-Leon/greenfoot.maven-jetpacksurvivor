@@ -1,10 +1,10 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles;
 
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.NPCInterface;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteDestroyer;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
@@ -12,7 +12,8 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 
 public class Projectile extends Sprite {
-    private final SpriteDestroyer spriteDestoyer;
+//    private final SpriteDestroyer spriteDestroyer;
+    private final SpriteRemover spriteDestroyer;
     private int speed;
     private Class enemy;
     public static int lootchance;
@@ -26,7 +27,8 @@ public class Projectile extends Sprite {
         super("ant.png");
         this.speed = speed;
         this.enemy = cls;
-        this.spriteDestoyer = new SpriteDestroyer(this.getWorld());
+//        this.spriteDestroyer = new SpriteDestroyer(this.getWorld());
+        this.spriteDestroyer = new SpriteRemover(this);
     }
 
 
@@ -45,7 +47,7 @@ public class Projectile extends Sprite {
         if (worldSensor.atWorldEdge(3)) {
             die();
         } else if (actor != null) {
-            spriteDestoyer.destroy(actor);
+            spriteDestroyer.destroy(actor);
             addLoot(100);
             Player.INSTANCE.kills++;
             die();
@@ -72,7 +74,7 @@ public class Projectile extends Sprite {
             }
         }, getX(), getY());
 //        Greenfoot.playSound("vaporize.mp3");
-        spriteDestoyer.destroy(this);
+        spriteDestroyer.destroy(this);
     }
 
     @Deprecated

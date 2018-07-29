@@ -1,14 +1,12 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite;
 
-import com.github.git_leon.jetpack_survivor_maven.worlds.SpriteWorld;
-
 import java.util.function.Predicate;
 
-public class SpriteDestroyer {
-    private final SpriteWorld spriteWorld;
+public class SpriteRemover {
+    private final Sprite sprite;
 
-    public SpriteDestroyer(SpriteWorld spriteWorld) {
-        this.spriteWorld = spriteWorld;
+    public SpriteRemover(Sprite sprite) {
+        this.sprite = sprite;
     }
 
     public void destroy(Sprite sprite) {
@@ -17,8 +15,8 @@ public class SpriteDestroyer {
 
     public void destroy(Predicate<Sprite> predicate, Sprite sprite) {
         if (predicate.test(sprite)) {
-            if(spriteWorld != null)
-            spriteWorld.removeSprite(sprite);
+            if(sprite != null)
+                sprite.getWorld().removeSprite(sprite);
         }
     }
 
@@ -29,7 +27,7 @@ public class SpriteDestroyer {
 
     public void add(Predicate<Sprite> predicate, Sprite sprite) {
         if (predicate.test(sprite)) {
-            spriteWorld.removeSprite(sprite);
+            sprite.getWorld().removeSprite(sprite);
         }
     }
 }
