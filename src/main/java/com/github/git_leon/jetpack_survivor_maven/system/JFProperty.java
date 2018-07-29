@@ -20,8 +20,10 @@ public class JFProperty {
         return propertyType.get(properties);
     }
 
-    public void set(String propertyValue) {
-        propertyType.set(properties, propertyValue);
+    public JFProperty set(String propertyValue) {
+        if (propertyValue != null)
+            propertyType.set(properties, propertyValue);
+        return this;
     }
 
     public JFootPropertyType getPropertyType() {

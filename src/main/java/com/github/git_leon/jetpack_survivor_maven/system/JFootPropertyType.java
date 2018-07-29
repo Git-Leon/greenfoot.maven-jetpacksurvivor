@@ -1,5 +1,8 @@
 package com.github.git_leon.jetpack_survivor_maven.system;
 
+import com.github.git_leon.collectionutils.maps.InvertableMap;
+
+import java.util.Map;
 import java.util.Properties;
 
 public enum JFootPropertyType {
@@ -9,6 +12,7 @@ public enum JFootPropertyType {
     SCENARIO_HIDECONTROLS("scenario.hideControls"),
     SCENARIO_LOCK("scenario.lock");
 
+
     private final String propertyName;
 
     JFootPropertyType(String propertyName) {
@@ -16,8 +20,7 @@ public enum JFootPropertyType {
     }
 
     public static JFootPropertyType getValueOf(String propertyName) {
-        // TODO
-        return null;
+        return JFootPropertyTypeMap.INSTANCE.get(propertyName);
     }
 
     public void set(Properties properties, String propertyValue) {

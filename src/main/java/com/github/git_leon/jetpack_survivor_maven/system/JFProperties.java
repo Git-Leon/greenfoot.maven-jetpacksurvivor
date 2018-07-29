@@ -1,12 +1,14 @@
 package com.github.git_leon.jetpack_survivor_maven.system;
 
 import com.github.git_leon.Introspection;
+import com.github.git_leon.collectionutils.maps.InvertableMap;
 import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 public class JFProperties {

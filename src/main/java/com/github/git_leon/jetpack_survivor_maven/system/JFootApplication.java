@@ -14,12 +14,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
 public class JFootApplication {
-    private final JFProperties properties;
+    private final JFootProperties properties;
 
     public JFootApplication(String[] args) throws IOException {
         ClassLoader loader = GreenfootScenarioMain.class.getClassLoader();
         InputStream is = loader.getResourceAsStream("standalone.properties");
-        this.properties = new JFProperties(args);
+        this.properties = new JFootProperties(is);
         properties.load(is);
         Config.initializeStandalone(new StandalonePropStringManager(properties.getProperties()));
         is.close();
@@ -27,7 +27,7 @@ public class JFootApplication {
 
     public void run() {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
-        System.setProperty("com.apple.mrj.application.apple.menu.about.name", properties.PROJECT_NAME.get());
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", properties.getProperty(JFootPropertyType.PROJECT_NAME).toString());
 
         final GreenfootScenarioViewer[] gsv = new GreenfootScenarioViewer[1];
         final JFrame[] frame = new JFrame[1];
