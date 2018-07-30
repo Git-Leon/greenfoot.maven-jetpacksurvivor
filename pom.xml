@@ -17,12 +17,6 @@
         <repository>
             <id>git-leon-utils</id>
             <url>https://packagecloud.io/git-leon/utils/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
     </repositories>
 
@@ -67,7 +61,7 @@
         <dependency>
             <groupId>com.github.git-leon</groupId>
             <artifactId>collectionutils</artifactId>
-            <version>1.0</version>
+            <version>1.4</version>
         </dependency>
 
     </dependencies>

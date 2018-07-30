@@ -26,7 +26,7 @@ public class Partner extends Npc {
 
             setLocation(player.getX()-50, player.getY()-75);
             if(Util.keyDown("q") )
-                shot(player.bulletspeed * 3);
+                shot(player.getBulletspeed() * 3);
         } catch(NullPointerException npe) {} catch(IllegalStateException ise) {}
     }
 

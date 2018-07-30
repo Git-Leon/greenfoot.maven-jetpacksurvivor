@@ -1,19 +1,23 @@
 package com.github.git_leon.jetpack_survivor_maven.utils;
+
+import com.github.git_leon.collectionutils.maps.IntrospectiveMap;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootSound;
 import greenfoot.GreenfootImage;
 import greenfoot.Color;
+
 import java.lang.reflect.Field;
+
 public class Util {
     public static boolean isInRange(int testVal, int min, int max) {
         boolean inRange = false;
-        if(min > max) 
+        if (min > max)
             min = max;
         return (testVal >= min) && (testVal <= max);
     }
 
     public static int ran(int maxVal) {
-        if(maxVal < 0)
+        if (maxVal < 0)
             return -1 * Greenfoot.getRandomNumber(Math.abs(maxVal));
         return Greenfoot.getRandomNumber(maxVal);
     }
@@ -31,8 +35,8 @@ public class Util {
     }
 
     public static boolean keysDown(String... keys) {
-        for(String key : keys)
-            if(keyDown(key))
+        for (String key : keys)
+            if (keyDown(key))
                 return true;
         return false;
     }
@@ -42,7 +46,7 @@ public class Util {
     }
 
     public static boolean hasLifted(String key) {
-        return true;	
+        return true;
     }
 
     public static boolean XOR(boolean x, boolean y) {
@@ -58,16 +62,16 @@ public class Util {
         boolean exchanges = false;
         do {
             exchanges = false;
-            for(int i = 0; i < table.length - pass; i++) {
-                if(table[i].compareTo(table[i+1]) > 0) {
+            for (int i = 0; i < table.length - pass; i++) {
+                if (table[i].compareTo(table[i + 1]) > 0) {
                     T temp = table[i];
-                    table[i] = table[i+1];
-                    table[i+1] = temp;
+                    table[i] = table[i + 1];
+                    table[i + 1] = temp;
                     exchanges = true;
                 }
             }
             pass++;
-        } while(exchanges);
+        } while (exchanges);
         return table;
     }
 
@@ -77,8 +81,8 @@ public class Util {
 
     public static String longString(char delimeter, String... strings) {
         StringBuilder sb = new StringBuilder();
-        for(String string : strings)
-            sb.append(string+delimeter);
+        for (String string : strings)
+            sb.append(string + delimeter);
         return sb.toString();
     }
 
@@ -86,17 +90,23 @@ public class Util {
         return longString('\0', strings);
     }
 
+    public static String getFieldNamesAndValues(Object o) {
+        return new IntrospectiveMap(o).toString();
+    }
+
     public static String[] varsAndVals(Object obj) {
         try {
             Field[] fields = getFields(obj);
-            String[] varsAndVals= new String[fields.length];            
-            for(int i=0; i<fields.length; i++) {
+            String[] varsAndVals = new String[fields.length];
+            for (int i = 0; i < fields.length; i++) {
                 String name = fields[i].getName();
                 Object value = fields[i].get(obj);
-                varsAndVals[i] = name +": "+ value;
+                varsAndVals[i] = name + ": " + value;
             }
             return sorted(varsAndVals);
-        } catch(IllegalAccessException e) {return null;}
+        } catch (IllegalAccessException e) {
+            return null;
+        }
     }
 
     public static Field[] getFields(Object obj) {
@@ -107,27 +117,32 @@ public class Util {
         try {
             Field[] fields = getFields(obj);
             Object[] vals = new Object[fields.length];
-            for(int i=0; i<vals.length; i++)
+            for (int i = 0; i < vals.length; i++)
                 vals[i] = fields[i].get(obj);
             return vals;
-        } catch(IllegalAccessException iae) {return null;}
+        } catch (IllegalAccessException iae) {
+            return null;
+        }
     }
 
     public static String[] fieldnames(Object obj) {
         Field[] fields = obj.getClass().getFields();
         String[] names = new String[fields.length];
-        for(int i=0; i<fields.length; i++)
+        for (int i = 0; i < fields.length; i++)
             names[i] = fields[i].getName();
         return sorted(names);
     }
 
-    public static String[] privatefields(Object p) {        
-        try{
+    public static String[] privatefields(Object p) {
+        try {
             Field privateStringField = p.getClass().getDeclaredField("privateString");
             privateStringField.setAccessible(true);
             return (String[]) privateStringField.get(p);
-        }catch(NoSuchFieldException nsfe) { return null; }
-        catch(IllegalAccessException iae) {return null; }
+        } catch (NoSuchFieldException nsfe) {
+            return null;
+        } catch (IllegalAccessException iae) {
+            return null;
+        }
     }
 
     public static GreenfootSound playSound(String str) {
@@ -148,7 +163,7 @@ public class Util {
             return getText(text, size, foreground, Color.BLACK, Color.BLACK);
         }
 
-        public static GreenfootImage getText(String string, int size,Color foreground, Color background, Color outline) {
+        public static GreenfootImage getText(String string, int size, Color foreground, Color background, Color outline) {
             return new GreenfootImage(string, size, foreground, background, outline);
         }
     }

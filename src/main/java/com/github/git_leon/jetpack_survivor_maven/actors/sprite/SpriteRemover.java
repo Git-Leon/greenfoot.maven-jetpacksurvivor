@@ -15,8 +15,7 @@ public class SpriteRemover {
 
     public void destroy(Predicate<Sprite> predicate, Sprite sprite) {
         if (predicate.test(sprite)) {
-            if(sprite != null)
-                sprite.getWorld().removeSprite(sprite);
+            this.sprite.getWorld().removeSprite(sprite);
         }
     }
 
@@ -27,7 +26,7 @@ public class SpriteRemover {
 
     public void add(Predicate<Sprite> predicate, Sprite sprite) {
         if (predicate.test(sprite)) {
-            sprite.getWorld().removeSprite(sprite);
+            this.sprite.getWorld().removeSprite(sprite);
         }
     }
 }

@@ -49,7 +49,7 @@ public class Projectile extends Sprite {
         } else if (actor != null) {
             spriteDestroyer.destroy(actor);
             addLoot(100);
-            Player.INSTANCE.kills++;
+            Player.INSTANCE.increaseKills();
             die();
         }
     }

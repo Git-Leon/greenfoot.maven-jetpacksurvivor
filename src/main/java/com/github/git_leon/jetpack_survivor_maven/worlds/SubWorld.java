@@ -28,31 +28,6 @@ public class SubWorld extends SpriteWorld {
         mode(1);
     }
 
-    private SubWorld(
-            int shotdelay, int firerate, int magsize, int thrust,
-            int fuel, int jumpstrength, int bulletspeed, int runspeed,
-            int lootchance) {
-        super(800, 300, 1);
-        custom(shotdelay, firerate, magsize, thrust,
-                fuel, jumpstrength, bulletspeed, runspeed, lootchance);
-    }
-
-    private void custom(
-            int shotdelay, int firerate, int magsize, int thrust,
-            int fuel, int jumpstrength, int bulletspeed, int runspeed,
-            int lootchance) {
-        makeGround();
-        Projectile.lootchance = lootchance;
-        this.player = new Player(shotdelay, firerate, magsize, thrust,
-                fuel, jumpstrength, bulletspeed, runspeed);
-        addObject(player, 174, 50);
-        addObject(new Jetpack(), 174, 50);
-        addObject(new Menu(), getWidth() / 2, getHeight() / 2);
-
-        Menu playerInfo = new Menu(true);
-        addObject(playerInfo, playerInfo.getImage().getWidth() / 2, playerInfo.getImage().getHeight() / 2);
-    }
-
     public void act() {
 //        addEnemy(0);
     }

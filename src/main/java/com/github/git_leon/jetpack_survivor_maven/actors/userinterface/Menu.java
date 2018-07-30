@@ -35,8 +35,11 @@ public class Menu extends SubActor {
 
     private String getPlayerInfo() {
         this.score = getScore();
-        return Util.longString('\n', Util.varsAndVals(getPlayer())) + "SCORE: " +getScore();
+
+//        return Util.longString('\n', Util.varsAndVals(getPlayer())) + "SCORE: " +getScore();
+        return Util.getFieldNamesAndValues(getPlayer()) + "\nSCORE: " + getScore();
     }
+
 
     private int startScore = 1038;
     public static int score;

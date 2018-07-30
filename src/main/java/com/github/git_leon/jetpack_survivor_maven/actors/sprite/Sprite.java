@@ -25,10 +25,10 @@ public abstract class Sprite extends Actor implements SpriteInterface {
     }
 
     public Sprite(String basename, String suffix, int noOfImages) {
-        GreenfootImage[] immageArray = new GreenfootImage[noOfImages];
+        GreenfootImage[] imageArray = new GreenfootImage[noOfImages];
         for (int i = 0; i < noOfImages; i++)
-            immageArray[i] = new GreenfootImage(basename + i + suffix);
-        imageList = Arrays.asList(immageArray);
+            imageArray[i] = new GreenfootImage(basename + i + suffix);
+        imageList = Arrays.asList(imageArray);
         setImage(imageList.get(0));
     }
 

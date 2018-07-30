@@ -8,9 +8,13 @@ import java.util.List;
 public abstract class SpriteWorld extends World {
     public SpriteWorld(int worldWidth, int worldHeight, int cellSize) {
         super(worldWidth, worldHeight, cellSize);
+        init();
     }
 
-    public static <T extends Sprite> List<T> getSprites(World world, Class<T> cls) {
+    protected void init() {
+    }
+
+    public static <SpriteSubType extends Sprite> List<SpriteSubType> getSprites(World world, Class<SpriteSubType> cls) {
         return world.getObjects(cls);
     }
 
