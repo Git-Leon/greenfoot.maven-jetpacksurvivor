@@ -82,7 +82,7 @@ public class SubActor extends Actor{
     }
 
     public Player getPlayer() {
-        return ((SubWorld)getWorld()).getPlayer();
+        return Player.INSTANCE;
     }
 
     public Partner getPartner() {
