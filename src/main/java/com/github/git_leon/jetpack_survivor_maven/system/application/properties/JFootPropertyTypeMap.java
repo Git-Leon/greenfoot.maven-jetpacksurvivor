@@ -1,4 +1,4 @@
-package com.github.git_leon.jetpack_survivor_maven.system;
+package com.github.git_leon.jetpack_survivor_maven.system.application.properties;
 
 import com.github.git_leon.collectionutils.maps.InvertableMap;
 

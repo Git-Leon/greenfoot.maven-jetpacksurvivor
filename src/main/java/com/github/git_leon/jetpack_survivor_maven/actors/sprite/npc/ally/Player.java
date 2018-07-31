@@ -10,7 +10,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
 import com.github.git_leon.jetpack_survivor_maven.worlds.SubWorld;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Bullet;
 
 import java.util.ArrayList;
 
@@ -175,8 +175,8 @@ public class Player extends SubActor {
         return null;
     }
 
-    public Projectile fire(int speed) {
-        if(count(Projectile.class) < magsize)
+    public Bullet fire(int speed) {
+        if(count(Bullet.class) < magsize)
             if(isAvailable("shoot") ) {
                 setImage(Resources.IMAGES.getImage("player/shoot/shoot3.png"));
                 if(getRotation() == 180) {

@@ -26,4 +26,8 @@ public class SpriteDestroyer {
             spriteDecoratee.getWorld().addSprite(sprite, x, y);
         }
     }
+
+    public void destroy() {
+        destroy(spriteDecoratee);
+    }
 }

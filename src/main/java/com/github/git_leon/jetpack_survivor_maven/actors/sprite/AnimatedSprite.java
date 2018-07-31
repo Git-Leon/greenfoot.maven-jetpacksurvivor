@@ -53,4 +53,13 @@ public abstract class AnimatedSprite extends Sprite {
     public List<GreenfootImage> getImages() {
         return imageList;
     }
+
+    @Override
+    public void act() {
+        animate();
+    }
+
+    protected boolean hasAnimatedOnce() {
+        return imageList.indexOf(getImage()) == 0;
+    }
 }

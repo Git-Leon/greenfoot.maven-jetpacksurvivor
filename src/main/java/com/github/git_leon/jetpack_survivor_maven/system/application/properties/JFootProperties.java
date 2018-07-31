@@ -1,4 +1,4 @@
-package com.github.git_leon.jetpack_survivor_maven.system;
+package com.github.git_leon.jetpack_survivor_maven.system.application.properties;
 
 import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
 
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class JFootProperties {
+public class JFootProperties implements JFootPropertiesInterface {
     private Properties properties;
 
     public JFootProperties(InputStream is) {

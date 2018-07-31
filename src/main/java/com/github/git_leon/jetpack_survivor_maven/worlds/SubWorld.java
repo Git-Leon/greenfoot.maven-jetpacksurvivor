@@ -10,8 +10,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
-import com.github.git_leon.jetpack_survivor_maven.utils.Util;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Bullet;
 
 import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
 
@@ -71,7 +70,6 @@ public class SubWorld extends SpriteWorld {
 
     private void classic() {
         makeGround();
-        Projectile.lootchance = 66;
         this.player = Player.INSTANCE;
         this.partner = new Partner();
         addObject(player, 174, 50);

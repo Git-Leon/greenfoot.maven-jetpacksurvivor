@@ -2,7 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Bullet;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
@@ -35,7 +35,7 @@ public class Partner extends Npc {
     }
 
     public void shot(int speed) {
-        Projectile bullet = player.fire(speed).setSpeed(speed);
+        Bullet bullet = player.fire(speed).setSpeed(speed);
         bullet.setLocation(getX(), getY());
         List<Enemy> list = player.getObjects(Enemy.class);
         int index = Util.ran(2) == 1 ? list.size()-1 : 0;
