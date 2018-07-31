@@ -1,6 +1,7 @@
 package com.github.git_leon.jetpack_survivor_maven.system;
 
 import bluej.Config;
+import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
 import greenfoot.Greenfoot;
 import greenfoot.export.GreenfootScenarioMain;
 import greenfoot.export.GreenfootScenarioViewer;
@@ -33,8 +34,7 @@ public class JFootApplication {
         final JFrame[] frame = new JFrame[1];
 
         try {
-            EventQueue.invokeAndWait(new Runnable() {
-                public void run() {
+            EventQueue.invokeAndWait(() -> {
                     frame[0] = new JFrame(GreenfootScenarioMain.scenarioName);
                     gsv[0] = new GreenfootScenarioViewer(frame[0]);
                     frame[0].setDefaultCloseOperation(3);
@@ -42,7 +42,6 @@ public class JFootApplication {
                     URL resource = this.getClass().getClassLoader().getResource("greenfoot.png");
                     ImageIcon icon = new ImageIcon(resource);
                     frame[0].setIconImage(icon.getImage());
-                }
             });
             gsv[0].init();
             EventQueue.invokeAndWait(() -> {
@@ -51,10 +50,9 @@ public class JFootApplication {
                 if (Config.getPropBoolean("scenario.hideControls", false)) {
                     Greenfoot.start();
                 }
-
             });
         } catch (InvocationTargetException | InterruptedException var4) {
-            var4.printStackTrace();
+            throw new JFootError(var4);
         }
 
     }

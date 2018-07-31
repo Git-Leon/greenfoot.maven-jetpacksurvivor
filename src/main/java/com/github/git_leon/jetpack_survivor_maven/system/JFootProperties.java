@@ -6,6 +6,7 @@ import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
 
 public class JFootProperties {
@@ -33,9 +34,11 @@ public class JFootProperties {
 
     public void load(InputStream is) {
         try {
-            properties.load(is);
+            properties.load(Optional.of(is).get());
         } catch (IOException e) {
             throw new JFootError(e);
+        } catch(NullPointerException e) {
+
         }
     }
 

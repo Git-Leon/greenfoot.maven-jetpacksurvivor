@@ -1,7 +1,9 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
+import com.github.git_leon.Keys;
 import com.github.git_leon.jetpack_survivor_maven.actors.CoolDown;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
+import com.github.git_leon.jetpack_survivor_maven.system.controls.Keyboard;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
@@ -105,10 +107,6 @@ public class Player extends SubActor {
         kill(this);
     }
 
-    public void handleCollision() {
-
-    }
-
     public boolean hitPlatform() {
         try {
             for (Object platform : getIntersectingObjects(Platform.class))
@@ -124,7 +122,7 @@ public class Player extends SubActor {
 
     private void checkKeys() {
         if (!hitPlatform()) {
-            if (Util.keysDown("left", "a")) {
+            if (Keyboard.isKeyDown(Keys.LEFT)) {
                 if (v_flipped == false) {
                     setRotation(180);
                     v_flipImages();

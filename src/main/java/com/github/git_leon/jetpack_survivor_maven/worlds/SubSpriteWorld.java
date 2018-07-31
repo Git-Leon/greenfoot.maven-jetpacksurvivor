@@ -1,6 +1,5 @@
 package com.github.git_leon.jetpack_survivor_maven.worlds;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Brick;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 
