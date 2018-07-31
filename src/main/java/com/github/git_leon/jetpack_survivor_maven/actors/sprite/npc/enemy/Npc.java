@@ -17,13 +17,13 @@ public class Npc extends AnimatedSprite implements NPCInterface {
 
     public Npc(List<GreenfootImage> imageList) {
         super(imageList);
-        this.spriteDestroyer = new SpriteDestroyer(getWorld());
+        this.spriteDestroyer = new SpriteDestroyer(this);
         this.adapterPiece = new SubActor();
     }
 
     public Npc(String prefix, String suffix, int numOfImages) {
         super(prefix, suffix, numOfImages);
-        this.spriteDestroyer = new SpriteDestroyer(getWorld());
+        this.spriteDestroyer = new SpriteDestroyer(this);
         this.adapterPiece = new SubActor();
 
     }

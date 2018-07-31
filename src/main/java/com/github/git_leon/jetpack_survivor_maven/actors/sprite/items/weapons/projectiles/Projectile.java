@@ -26,7 +26,7 @@ public class Projectile extends Sprite {
         super("ant.png");
         this.speed = speed;
         this.enemy = cls;
-        this.spriteDestoyer = new SpriteDestroyer(this.getWorld());
+        this.spriteDestoyer = new SpriteDestroyer(this);
     }
 
 
