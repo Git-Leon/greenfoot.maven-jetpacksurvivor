@@ -17,20 +17,25 @@ public abstract class AnimatedSprite extends Sprite {
         super(imageList);
     }
 
+    @Override
+    public final void act() {
+        animate();
+        postAnimationBehavior();
+    }
+
+    abstract public void postAnimationBehavior();
 
     public void animate(int frequency) {
-        if (lifetime % frequency == 1) {
-            animate();
+        if (lifetime % frequency == 0) {
+            currentImageIndex++;
+            currentImageIndex %= imageList.size();
+            setImage(imageList.get(currentImageIndex));
         }
         lifetime++;
     }
 
     public void animate() {
-        if (imageList != null) {
-            currentImageIndex++;
-            currentImageIndex %= imageList.size();
-            setImage(imageList.get(currentImageIndex));
-        }
+        animate(1);
     }
 
 

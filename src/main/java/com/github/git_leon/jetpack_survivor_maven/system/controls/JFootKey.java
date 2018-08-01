@@ -5,6 +5,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public enum JFootKey {
     /**
@@ -1131,6 +1134,7 @@ public enum JFootKey {
 
     /**
      * Constant for the Apple {@code Command} key.
+     *
      * @since JavaFX 2.1
      */
     COMMAND(KeyCode.COMMAND),
@@ -1145,8 +1149,19 @@ public enum JFootKey {
     JFootKey(KeyCode keyCode) {
         this.keyCode = keyCode;
     }
+
+    public static boolean isAnyKeyDown(JFootKey... keys) {
+        for(JFootKey key : keys) {
+            if(key.isKeyDown()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Gets name of this key code.
+     *
      * @return Name of this key code
      */
     public final String getName() {
@@ -1157,9 +1172,33 @@ public enum JFootKey {
         return Greenfoot.isKeyDown(getName());
     }
 
+    public <ArgType1, ArgType2> void onKeyPress(
+            BiConsumer<ArgType1, ArgType2> func,
+            ArgType1 argType1,
+            ArgType2 argType2) {
+        if (isKeyDown())
+            func.accept(argType1, argType2);
+    }
+
+    public <ArgType1> void onKeyPress(
+            Consumer<ArgType1> func,
+            ArgType1 argType1) {
+        if (isKeyDown())
+            func.accept(argType1);
+    }
+
+    public void onKeyPress(Runnable runnable) {
+        if (isKeyDown())
+            runnable.run();
+    }
+
 
     public KeyCode toKeyCode() {
         return keyCode;
+    }
+
+    public int toKeyCodeInt() {
+        return keyCode.impl_getCode();
     }
 
     public static List<String> getCurrentlyPressedKeys() {
@@ -1167,22 +1206,22 @@ public enum JFootKey {
     }
 
     public static JFootKey toJFootKey(Integer keyCode) {
-        for(KeyCode kc : KeyCode.values()) {
-            if(kc.impl_getCode() == keyCode) {
-                return toJFootKey(kc);
+        for (JFootKey jfk : JFootKey.values()) {
+            if (jfk.toKeyCodeInt() == keyCode) {
+                return jfk;
             }
         }
-        String errorMessage  = "Unable to find keycode with value [ %s ]";
+        String errorMessage = "Unable to find keycode with value [ %s ]";
         throw new IllegalArgumentException(String.format(errorMessage, keyCode));
     }
 
     public static JFootKey toJFootKey(KeyCode keyCode) {
-        for(JFootKey jFootKey : values()) {
-            if(jFootKey.toKeyCode().equals(keyCode)) {
+        for (JFootKey jFootKey : values()) {
+            if (jFootKey.toKeyCode().equals(keyCode)) {
                 return jFootKey;
             }
         }
-        String errorMessage  = "Unable to find keycode with value [ %s ]";
+        String errorMessage = "Unable to find keycode with value [ %s ]";
         throw new IllegalArgumentException(String.format(errorMessage, keyCode));
     }
 

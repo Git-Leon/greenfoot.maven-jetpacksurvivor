@@ -6,7 +6,7 @@ public class ZombieCrawler extends Mob {
         flipImagesHorizontally();
     }
 
-    public void act() {
+    public void postAnimationBehavior() {
         touchGround();
         act(1,3,1);
     }

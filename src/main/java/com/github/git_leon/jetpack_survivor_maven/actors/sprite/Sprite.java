@@ -34,6 +34,23 @@ public abstract class Sprite extends Actor implements SpriteInterface {
 
     public Sprite(List<GreenfootImage> imageList) {
         this.imageList = imageList;
+        setImage(imageList.get(0));
+    }
+
+    public void moveLeft(int xOffset) {
+        setLocation(getX() - xOffset, getY());
+    }
+
+    public void moveRight(int xOffset) {
+        moveLeft(-xOffset);
+    }
+
+    public void moveUp(int yOffset) {
+        setLocation(getX(), getY()-yOffset);
+    }
+
+    public void moveDown(int yOffset) {
+        moveUp(-yOffset);
     }
 
     @Override

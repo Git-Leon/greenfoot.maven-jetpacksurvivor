@@ -7,7 +7,7 @@ public class Mummy extends Mob {
         super(    "npc/mummy/", ".png", 17);
     }
 
-    public void act() {
+    public void postAnimationBehavior() {
         touchGround();
         act(Util.ran(2), Util.ran(3)+1, 1);
     }

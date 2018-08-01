@@ -29,6 +29,15 @@ public interface SpriteInterface<SpriteSubType extends SpriteInterface> {
 
     void turn(int degrees);
 
+
+    void moveLeft(int xOffset);
+
+    void moveRight(int xOffset);
+
+    void moveUp(int yOffset);
+
+    void moveDown(int yOffset);
+
     SpriteSubType getOneObjectAtOffset(int x, int y, Class<SpriteSubType> cls);
 
     <SpriteWorldSubType extends SpriteWorld> SpriteWorldSubType getWorld();

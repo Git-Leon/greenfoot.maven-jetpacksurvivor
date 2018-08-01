@@ -20,7 +20,7 @@ public class Partner extends Npc {
         super(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);
     }
 
-    public void act() {
+    public void postAnimationBehavior() {
         animate(6);
         try {
 

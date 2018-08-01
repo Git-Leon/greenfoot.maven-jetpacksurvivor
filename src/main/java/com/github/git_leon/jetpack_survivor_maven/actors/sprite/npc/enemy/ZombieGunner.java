@@ -9,7 +9,7 @@ public class ZombieGunner extends Mob {
     }
 
 
-    public void act() {
+    public void postAnimationBehavior() {
         adapterPiece.checkFall();
         if(adapterPiece.onGround() && Util.chance(1))
             adapterPiece.jump(15);

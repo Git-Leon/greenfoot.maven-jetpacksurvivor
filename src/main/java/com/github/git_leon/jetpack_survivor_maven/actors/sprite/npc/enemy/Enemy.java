@@ -46,7 +46,7 @@ public class Enemy extends Npc {
         constructor();
     }
 
-    public void act() {
+    public void postAnimationBehavior() {
         try {
             //facePlayer(100);
             if(is("orc_rider")) {

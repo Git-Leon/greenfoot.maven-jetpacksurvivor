@@ -22,6 +22,11 @@ public class Npc extends AnimatedSprite implements NPCInterface {
         this.adapterPiece = new SubActor();
     }
 
+    @Override
+    public void postAnimationBehavior() {
+
+    }
+
     public Npc(String prefix, String suffix, int numOfImages) {
         super(prefix, suffix, numOfImages);
         this.spriteDestroyer = new SpriteRemover(this);
