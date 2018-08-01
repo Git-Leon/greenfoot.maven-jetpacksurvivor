@@ -4,6 +4,7 @@ import com.github.git_leon.Keys;
 import com.github.git_leon.jetpack_survivor_maven.actors.CoolDown;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.Keyboard;
+import com.github.git_leon.jetpack_survivor_maven.system.controls.MyKeyCode;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
@@ -13,6 +14,7 @@ import com.github.git_leon.jetpack_survivor_maven.worlds.SubWorld;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 
@@ -122,7 +124,7 @@ public class Player extends SubActor {
 
     private void checkKeys() {
         if (!hitPlatform()) {
-            if (Keyboard.isKeyDown(Keys.LEFT)) {
+            if (MyKeyCode.LEFT.isKeyDown()) {
                 if (v_flipped == false) {
                     setRotation(180);
                     v_flipImages();
