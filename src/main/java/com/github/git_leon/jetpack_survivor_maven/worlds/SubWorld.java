@@ -66,7 +66,7 @@ public class SubWorld extends SpriteWorld {
 
     private void makeGround() {
         for (int i = 0; i < 13; i++) {
-            Platform platform = new Platform("bricks1.jpg");
+            Platform platform = new Platform();
             addObject(platform, i * 64, getHeight());
         }
     }

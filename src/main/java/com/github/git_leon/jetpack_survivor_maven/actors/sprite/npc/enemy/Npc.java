@@ -2,7 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteRemover;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.NPCInterface;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
@@ -14,11 +14,11 @@ import java.util.List;
 public class Npc extends AnimatedSprite implements NPCInterface {
     @Deprecated
     protected final SubActor adapterPiece;
-    private final SpriteRemover spriteDestroyer;
+    private final SpriteCreatorRemover spriteDestroyer;
 
     public Npc(List<GreenfootImage> imageList) {
         super(imageList);
-        this.spriteDestroyer = new SpriteRemover(this);
+        this.spriteDestroyer = new SpriteCreatorRemover(this);
         this.adapterPiece = new SubActor();
     }
 
@@ -29,7 +29,7 @@ public class Npc extends AnimatedSprite implements NPCInterface {
 
     public Npc(String prefix, String suffix, int numOfImages) {
         super(prefix, suffix, numOfImages);
-        this.spriteDestroyer = new SpriteRemover(this);
+        this.spriteDestroyer = new SpriteCreatorRemover(this);
         this.adapterPiece = new SubActor();
 
     }

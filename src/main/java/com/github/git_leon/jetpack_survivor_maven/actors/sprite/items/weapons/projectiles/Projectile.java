@@ -1,6 +1,6 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteRemover;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
@@ -13,9 +13,8 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 
 public class Projectile extends Sprite {
 //    private final SpriteDestroyer spriteDestroyer;
-    private final SpriteRemover spriteDestroyer;
+    private final SpriteCreatorRemover spriteDestroyer;
     private int speed;
-    private Class enemy;
     public static int lootchance;
 
 
@@ -26,9 +25,7 @@ public class Projectile extends Sprite {
     public Projectile(int speed, Class<? extends NPCInterface> cls) {
         super("ant.png");
         this.speed = speed;
-        this.enemy = cls;
-//        this.spriteDestroyer = new SpriteDestroyer(this.getWorld());
-        this.spriteDestroyer = new SpriteRemover(this);
+        this.spriteDestroyer = new SpriteCreatorRemover(this);
     }
 
 
