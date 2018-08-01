@@ -12,7 +12,7 @@ import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 public class P1 extends AnimatedSprite implements GravityInfluenceeInterface {
     private int runSpeed;
     private final SpriteCreatorRemover bulletCreator;
-    private Float verticalSpeed = 1F;
+    private float verticalSpeed;
 
     public P1() {
         super("player/walk/walk", ".png", 6);
@@ -44,9 +44,9 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface {
 
     public void controls() {
         JFootKey.S.onKeyPress(this::shoot);
-        JFootKey.LEFT.onKeyPress(super::moveLeft, 1);
-        JFootKey.RIGHT.onKeyPress(super::moveRight, 1);
-        JFootKey.DOWN.onKeyPress(super::moveDown, 1);
+        JFootKey.LEFT.onKeyPress(super::moveLeft, runSpeed);
+        JFootKey.RIGHT.onKeyPress(super::moveRight, runSpeed);
+        JFootKey.DOWN.onKeyPress(super::moveDown, runSpeed);
         if (isOnGround() && JFootKey.UP.isKeyDown() ) {
             moveUp(1);
             setVerticalSpeed(-10F);
