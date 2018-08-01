@@ -5,7 +5,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
 
 import java.util.function.Supplier;
 
-public enum EnemyGenerator {
+public enum MobGenerator {
     BAT(Bat::new),
     MUMMY(Mummy::new),
     FIEND_CRAWLER(FiendCrawler::new),
@@ -14,7 +14,7 @@ public enum EnemyGenerator {
     ZOMBIE_GUNNER(ZombieGunner::new);
     private final Supplier<Mob> enemySupplier;
 
-    EnemyGenerator(Supplier<Mob> enemySupplier) {
+    MobGenerator(Supplier<Mob> enemySupplier) {
         this.enemySupplier = enemySupplier;
     }
 

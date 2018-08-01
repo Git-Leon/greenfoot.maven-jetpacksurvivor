@@ -7,8 +7,7 @@ public class OrcRider extends Mob {
 
 
     public void postAnimationBehavior() {
-        touchGround();
-        act(5, 10, 1);
+
     }
 
 }

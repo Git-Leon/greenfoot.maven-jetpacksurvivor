@@ -41,7 +41,7 @@ public class Enemy extends Npc {
     }
 
     public Enemy() {
-        super(EnemyGenerator.getRandom().getImages());
+        super(MobGenerator.getRandom().getImages());
         this.type = types[ Util.ran(types.length) ];
         constructor();
     }

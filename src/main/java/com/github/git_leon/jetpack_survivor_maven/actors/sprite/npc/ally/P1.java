@@ -17,6 +17,7 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface {
     public P1() {
         super("player/walk/walk", ".png", 6);
         this.bulletCreator = new SpriteCreatorRemover(this);
+        this.runSpeed = 2;
     }
 
     @Override
@@ -33,28 +34,7 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface {
     @Override
     public final void postAnimationBehavior() {
         controls();
-        if (!isOnGround()) {
-            Gravity.applyNormal(this);
-        }
-    }
-
-    public boolean isOnGround() {
-        return getOneIntersectingObject(Platform.class) != null;
-    }
-
-    public void controls() {
-        JFootKey.S.onKeyPress(this::shoot);
-        JFootKey.LEFT.onKeyPress(super::moveLeft, runSpeed);
-        JFootKey.RIGHT.onKeyPress(super::moveRight, runSpeed);
-        JFootKey.DOWN.onKeyPress(super::moveDown, runSpeed);
-        if (isOnGround() && JFootKey.UP.isKeyDown() ) {
-            moveUp(1);
-            setVerticalSpeed(-10F);
-        }
-    }
-
-    private void shoot() {
-        bulletCreator.add(new Bullet());
+        Gravity.applyNormal(this);
     }
 
     @Override
@@ -71,4 +51,27 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface {
     public float getTerminalSpeed() {
         return 3;
     }
+
+    @Override
+    public boolean isOnGround() {
+        return getOneIntersectingObject(Platform.class) != null;
+    }
+
+
+    public void controls() {
+        JFootKey.S.onKeyPress(this::shoot);
+        JFootKey.LEFT.onKeyPress(super::moveLeft, runSpeed);
+        JFootKey.RIGHT.onKeyPress(super::moveRight, runSpeed);
+        JFootKey.DOWN.onKeyPress(super::moveDown, runSpeed);
+        if (isOnGround() && JFootKey.UP.isKeyDown()) {
+            moveUp(1);
+            setVerticalSpeed(-10F);
+        }
+    }
+
+    private void shoot() {
+        bulletCreator.add(new Bullet());
+    }
+
+
 }

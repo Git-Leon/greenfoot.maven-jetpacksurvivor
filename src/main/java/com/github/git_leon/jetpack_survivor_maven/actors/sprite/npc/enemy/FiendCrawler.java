@@ -4,4 +4,9 @@ public class FiendCrawler extends Mob {
     public FiendCrawler() {
         super("npc/fiend_crawler/", ".png", 5);
     }
+
+    @Override
+    public void postAnimationBehavior() {
+
+    }
 }

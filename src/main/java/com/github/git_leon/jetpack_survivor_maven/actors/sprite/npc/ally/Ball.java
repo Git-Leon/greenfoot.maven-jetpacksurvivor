@@ -11,7 +11,7 @@ import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluen
 /**
  * Write a description of class Ball here.
  */ // TODO
-public class Ball extends GravityInfluencee {
+public abstract class Ball extends GravityInfluencee {
     private float verticalSpeed = 0.0f;
     private float terminalSpeed = 30.0f;
 

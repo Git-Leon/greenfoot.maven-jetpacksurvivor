@@ -11,4 +11,6 @@ public interface GravityInfluenceeInterface extends SpriteInterface {
     void setVerticalSpeed(Float i);
 
     float getTerminalSpeed();
+
+    boolean isOnGround();
 }

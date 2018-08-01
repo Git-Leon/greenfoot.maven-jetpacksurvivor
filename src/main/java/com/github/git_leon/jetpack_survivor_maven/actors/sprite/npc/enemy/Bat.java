@@ -7,7 +7,7 @@ public class Bat extends Mob {
     }
 
     public void postAnimationBehavior() {
-        facePlayer(20);
-        act(-5, 3, 1);
+//        facePlayer(20);
+//        act(-5, 3, 1);
     }
 }

@@ -15,14 +15,14 @@ public enum Gravity {
         float verticalSpeed = sprite.getVerticalSpeed();
         if (verticalSpeed > sprite.getTerminalSpeed())
             verticalSpeed = sprite.getTerminalSpeed();
-        sprite.setVerticalSpeed(verticalSpeed+forceConstant);
+        sprite.setVerticalSpeed(verticalSpeed + forceConstant);
     }
 
 
     private void move(GravityInfluenceeInterface gravityInfluencee) {
         int x = gravityInfluencee.getX();
         int y = gravityInfluencee.getY() + gravityInfluencee.getVerticalSpeed().intValue();
-        gravityInfluencee.setLocation(x,y);
+        gravityInfluencee.setLocation(x, y);
     }
 
     public void apply(GravityInfluenceeInterface sprite) {
@@ -31,6 +31,8 @@ public enum Gravity {
     }
 
     public static void applyNormal(GravityInfluenceeInterface gravityInfluencee) {
-        NORMAL.apply(gravityInfluencee);
+        if (!gravityInfluencee.isOnGround()) {
+            NORMAL.apply(gravityInfluencee);
+        }
     }
 }

@@ -5,9 +5,4 @@ public class ZombieCrawler extends Mob {
         super("npc/zombie_crawler/", ".png", 12);
         flipImagesHorizontally();
     }
-
-    public void postAnimationBehavior() {
-        touchGround();
-        act(1,3,1);
-    }
 }
