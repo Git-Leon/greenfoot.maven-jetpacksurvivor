@@ -2,8 +2,11 @@ package com.github.git_leon.jetpack_survivor_maven.system.controls;
 
 import greenfoot.Greenfoot;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
-public enum MyKeyCode {
+import java.util.List;
+
+public enum JFootKey {
     /**
      * Constant for the {@code Enter} key.
      */
@@ -1139,14 +1142,9 @@ public enum MyKeyCode {
 
     private final KeyCode keyCode;
 
-    MyKeyCode(KeyCode keyCode) {
+    JFootKey(KeyCode keyCode) {
         this.keyCode = keyCode;
     }
-
-    public KeyCode toKeyCode() {
-        return keyCode;
-    }
-
     /**
      * Gets name of this key code.
      * @return Name of this key code
@@ -1158,4 +1156,34 @@ public enum MyKeyCode {
     public boolean isKeyDown() {
         return Greenfoot.isKeyDown(getName());
     }
+
+
+    public KeyCode toKeyCode() {
+        return keyCode;
+    }
+
+    public static List<String> getCurrentlyPressedKeys() {
+        throw new UnsupportedOperationException("This method has yet to be implemented");
+    }
+
+    public static JFootKey toJFootKey(Integer keyCode) {
+        for(KeyCode kc : KeyCode.values()) {
+            if(kc.impl_getCode() == keyCode) {
+                return toJFootKey(kc);
+            }
+        }
+        String errorMessage  = "Unable to find keycode with value [ %s ]";
+        throw new IllegalArgumentException(String.format(errorMessage, keyCode));
+    }
+
+    public static JFootKey toJFootKey(KeyCode keyCode) {
+        for(JFootKey jFootKey : values()) {
+            if(jFootKey.toKeyCode().equals(keyCode)) {
+                return jFootKey;
+            }
+        }
+        String errorMessage  = "Unable to find keycode with value [ %s ]";
+        throw new IllegalArgumentException(String.format(errorMessage, keyCode));
+    }
+
 }
