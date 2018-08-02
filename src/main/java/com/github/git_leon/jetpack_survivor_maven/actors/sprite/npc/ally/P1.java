@@ -9,7 +9,7 @@ import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluen
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 
 // TODO
-public class P1 extends AnimatedSprite implements GravityInfluenceeInterface {
+public class P1 extends Ally implements GravityInfluenceeInterface {
     private int runSpeed;
     private final SpriteCreatorRemover bulletCreator;
     private float verticalSpeed;

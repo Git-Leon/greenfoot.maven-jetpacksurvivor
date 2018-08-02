@@ -6,7 +6,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
-import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluencee.GravityInfluencee;
+import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluencee;
 
 /**
  * Write a description of class Ball here.

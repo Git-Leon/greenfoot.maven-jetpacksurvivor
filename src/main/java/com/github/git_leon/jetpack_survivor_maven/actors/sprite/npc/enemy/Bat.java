@@ -6,8 +6,8 @@ public class Bat extends Mob {
         super("npc/bat/", ".png", 10);
     }
 
-    public void postAnimationBehavior() {
-//        facePlayer(20);
-//        act(-5, 3, 1);
+    @Override
+    public final void animate() {
+        animate(5);
     }
 }

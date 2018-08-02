@@ -5,9 +5,4 @@ public class OrcRider extends Mob {
         super(  "npc/orc_rider/", ".png", 2);
     }
 
-
-    public void postAnimationBehavior() {
-
-    }
-
 }

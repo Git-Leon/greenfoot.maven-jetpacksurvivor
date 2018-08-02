@@ -4,6 +4,7 @@ import com.github.git_leon.RandomUtils;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Mob;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.MobGenerator;
 
 public class SubSpriteWorld extends SpriteWorld {
@@ -21,8 +22,12 @@ public class SubSpriteWorld extends SpriteWorld {
     }
 
     private void generateMob() {
+        Platform p = new Platform();
+        int groundHeight = p.getImage().getHeight();
         if (RandomUtils.createBoolean(10)) {
-            addObject(MobGenerator.getRandom(), getWidth(), getHeight());
+            Mob randomMob = MobGenerator.getRandom();
+
+            addObject(randomMob, getWidth() - 40, getHeight() - 60);
         }
     }
 

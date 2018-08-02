@@ -22,7 +22,7 @@ public enum MobGenerator {
         return enemySupplier;
     }
 
-    public static AnimatedSprite getRandom() {
+    public static Mob getRandom() {
         return RandomUtils.selectElement(values()).enemySupplier.get();
     }
 }

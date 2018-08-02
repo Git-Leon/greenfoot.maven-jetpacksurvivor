@@ -64,7 +64,7 @@ public abstract class Sprite extends Actor implements SpriteInterface {
     }
 
     @Override
-    protected final Sprite getOneIntersectingObject(Class<?> cls) {
+    public final Sprite getOneIntersectingObject(Class<?> cls) {
         return (Sprite) super.getOneIntersectingObject(cls);
     }
 }

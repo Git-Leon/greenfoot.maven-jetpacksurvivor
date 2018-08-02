@@ -2,7 +2,6 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.p
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 
 public class Bullet extends Sprite implements ProjectileInterface {
     private int speed = 5;
