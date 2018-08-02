@@ -5,7 +5,7 @@ package com.github.git_leon.jetpack_survivor_maven.physics.gravity;
  */
 public enum Gravity {
     NORMAL(1),
-    ANTI(-10);
+    ANTI(-1);
 
     private final int forceConstant;
 
@@ -13,11 +13,11 @@ public enum Gravity {
         this.forceConstant = forceConstant;
     }
 
-    private void addGravity(GravityInfluenceeInterface sprite) {
+    private void addGravity(GravityInfluenceeInterface sprite, int magnitude) {
         float verticalSpeed = sprite.getVerticalSpeed();
         if (verticalSpeed > sprite.getTerminalSpeed())
             verticalSpeed = sprite.getTerminalSpeed();
-        sprite.setVerticalSpeed(verticalSpeed + forceConstant);
+        sprite.setVerticalSpeed(verticalSpeed + (forceConstant * magnitude));
     }
 
 
@@ -27,9 +27,13 @@ public enum Gravity {
         gravityInfluencee.setLocation(x, y);
     }
 
-    public void apply(GravityInfluenceeInterface sprite) {
-        addGravity(sprite);
+    public void apply(GravityInfluenceeInterface sprite, int magnitude) {
+        addGravity(sprite, magnitude);
         move(sprite);
+    }
+
+    public void apply(GravityInfluenceeInterface sprite) {
+        apply(sprite, 1);
     }
 
     public static void applyNormal(GravityInfluenceeInterface gravityInfluencee) {

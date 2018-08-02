@@ -15,9 +15,10 @@ public class Rocket extends Sprite {
     }
 
     public void act() {
-        if(!JFootKey.E.isKeyDown()) {
+        if(!JFootKey.SPACE.isKeyDown()) {
             new SpriteCreatorRemover(this).destroy();
         } else {
+            setLocation(sprite);
             Gravity.ANTI.apply(sprite);
         }
     }

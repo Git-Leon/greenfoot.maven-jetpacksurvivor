@@ -67,4 +67,12 @@ public abstract class Sprite extends Actor implements SpriteInterface {
     public final Sprite getOneIntersectingObject(Class<?> cls) {
         return (Sprite) super.getOneIntersectingObject(cls);
     }
+
+    public void setLocation(SpriteInterface actor) {
+        setLocation(actor.getX(), actor.getY());
+    }
+
+    public boolean isAddedToWorld() {
+        return getWorld() != null;
+    }
 }

@@ -9,18 +9,19 @@ import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluenceeInterface;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 
-// TODO
 public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Ally {
     private int runSpeed;
     private float verticalSpeed;
     private SpriteCreatorRemover spriteCreator;
     private final Gun gun;
+    private Rocket rocket;
 
     public P1() {
         super("player/walk/walk", ".png", 6);
         this.gun = new Gun(this);
         this.runSpeed = 2;
         this.spriteCreator = new SpriteCreatorRemover(this);
+        this.rocket = new Rocket(this);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Al
     @Override
     public void moveRight(int xOffset) {
         super.moveRight(xOffset);
-        if(!super.flippedHorizontally) {
+        if (!super.flippedHorizontally) {
             flipImagesHorizontally();
         }
     }
@@ -71,25 +72,29 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Al
     @Override
     public void moveLeft(int xOffset) {
         super.moveLeft(xOffset);
-        if(super.flippedHorizontally) {
+        if (super.flippedHorizontally) {
             flipImagesHorizontally();
         }
     }
 
-
     public void controls() {
-        JFootKey.SPACE.onKeyPress(spriteCreator::add, new Rocket(this));
+        JFootKey.SPACE.onKeyPress(this::createRocket);
         JFootKey.DOWN.onKeyPress(gun::shoot, 5);
         JFootKey.LEFT.onKeyPress(this::moveLeft, runSpeed);
         JFootKey.RIGHT.onKeyPress(this::moveRight, runSpeed);
         if (isOnGround() && JFootKey.UP.isKeyDown()) {
             jump();
-            moveUp(1);
-            setVerticalSpeed(-10F);
         }
     }
 
+    private void createRocket() {
+        if(!rocket.isAddedToWorld()) {
+            spriteCreator.add(rocket);
+        }
+    }
+
+
     private void jump() {
-        Gravity.ANTI.apply(this);
+        Gravity.ANTI.apply(this, 15);
     }
 }
