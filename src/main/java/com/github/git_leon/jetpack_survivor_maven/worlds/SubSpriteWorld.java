@@ -14,7 +14,7 @@ public class SubSpriteWorld extends SpriteWorld {
     @Override
     public void init() {
         createGround();
-        addObject(new EnemyMaterializer(50F), getWidth() - 40, 60);
+        addObject(new EnemyMaterializer(1F), getWidth() - 40, 60);
         addObject(new P1Partner(), 0, 0);
     }
 

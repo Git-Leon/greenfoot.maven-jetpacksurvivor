@@ -1169,9 +1169,6 @@ public enum JFootKey {
     }
 
     public boolean isKeyDown() {
-        if(Greenfoot.isKeyDown(getName())) {
-            System.out.format("\n[ %s ] is down.", getName());
-        }
         return Greenfoot.isKeyDown(getName());
     }
 

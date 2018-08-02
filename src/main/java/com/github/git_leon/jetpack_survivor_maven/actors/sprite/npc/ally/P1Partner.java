@@ -17,6 +17,11 @@ public class P1Partner extends AnimatedSprite implements Ally {
     }
 
     @Override
+    public void animate() {
+        animate(3);
+    }
+
+    @Override
     public void postAnimationBehavior() {
         JFootKey.Q.onKeyPress(this::shoot);
         shadowPlayer();
@@ -24,7 +29,7 @@ public class P1Partner extends AnimatedSprite implements Ally {
 
     private void shoot() {
         Projectile b = gun.shoot(5);
-        SpriteSensorDecorator<Enemy> bulletRedirector = new SpriteSensorDecorator<Enemy>(b);
+        SpriteSensorDecorator<Enemy> bulletRedirector = new SpriteSensorDecorator<>(b);
         bulletRedirector.faceNearest(Enemy.class);
     }
 

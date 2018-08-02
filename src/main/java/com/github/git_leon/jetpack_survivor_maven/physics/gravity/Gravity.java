@@ -4,7 +4,9 @@ package com.github.git_leon.jetpack_survivor_maven.physics.gravity;
  * @author leon on 7/31/18.
  */
 public enum Gravity {
-    NORMAL(1);
+    NORMAL(1),
+    ANTI(-10);
+
     private final int forceConstant;
 
     Gravity(int forceConstant) {

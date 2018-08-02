@@ -2,9 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.p
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public abstract class Projectile<VictimClass extends Sprite> extends Sprite implements ProjectileInterface {
