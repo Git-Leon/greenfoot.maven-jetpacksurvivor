@@ -1,7 +1,7 @@
 package com.github.git_leon.jetpack_survivor_maven.actors;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.PlayerPartner;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.worlds.SubWorld;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
@@ -85,7 +85,7 @@ public class SubActor extends Actor{
         return Player.INSTANCE;
     }
 
-    public Partner getPartner() {
+    public PlayerPartner getPartner() {
         return ((SubWorld)getWorld()).getCurrentWorld().getPartner();
     }
 

@@ -2,6 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.worlds;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1Partner;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.EnemyMaterializer;
 
 public class SubSpriteWorld extends SpriteWorld {
@@ -13,6 +14,7 @@ public class SubSpriteWorld extends SpriteWorld {
     public void init() {
         createGround();
         addObject(new EnemyMaterializer(1F), getWidth() - 40, 60);
+        addObject(new P1Partner(), 0, 0);
     }
 
     private void createGround() {

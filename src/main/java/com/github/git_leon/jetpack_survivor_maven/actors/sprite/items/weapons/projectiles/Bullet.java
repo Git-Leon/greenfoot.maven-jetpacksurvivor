@@ -2,6 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.p
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 
 public class Bullet extends Sprite implements ProjectileInterface {
     private int speed = 5;
@@ -14,8 +15,17 @@ public class Bullet extends Sprite implements ProjectileInterface {
 
     public void act() {
         moveRight(speed);
-        spriteCreatorRemover.destroy((sprite)-> sprite.isAtEdge(), this);
+        destroyOnImpact(Enemy.class);
+        spriteCreatorRemover.destroy((sprite) -> sprite.isAtEdge(), this);
     }
+
+    private void destroyOnImpact(Class<? extends Sprite> cls) {
+        Sprite sprite = getOneIntersectingObject(cls);
+        if (sprite != null) {
+            spriteCreatorRemover.destroy(sprite);
+        }
+    }
+
 
     @Override
     public void setSpeed(int speed) {

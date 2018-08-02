@@ -7,7 +7,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.EnemyG
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.PlayerPartner;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
@@ -15,7 +15,7 @@ import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
 
 public class SubWorld extends SpriteWorld {
-    Partner partner = null;
+    PlayerPartner partner = null;
     Player player = null;
     private long birth = System.currentTimeMillis();
     private GreenfootSound gameExecutionMusic = SOUNDS.getSound("music0.mp3");
@@ -35,7 +35,7 @@ public class SubWorld extends SpriteWorld {
         return this.player;
     }
 
-    public Partner getPartner() {
+    public PlayerPartner getPartner() {
         return this.partner;
     }
 
@@ -74,7 +74,7 @@ public class SubWorld extends SpriteWorld {
         makeGround();
         Projectile.lootchance = 66;
         this.player = Player.INSTANCE;
-        this.partner = new Partner();
+        this.partner = new PlayerPartner();
         addObject(player, 174, 50);
         addObject(partner, getX(player) - 50, getY(player) + 100);
         addObject(new Jetpack(), 174, 50);

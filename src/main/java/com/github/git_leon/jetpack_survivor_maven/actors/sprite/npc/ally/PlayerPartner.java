@@ -8,14 +8,14 @@ import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 import java.util.List;
 
 /**
- * Write a description of class Partner here.
+ * Write a description of class PlayerPartner here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Partner extends Ally {
+public class PlayerPartner extends Ally {
     private Player player = Player.INSTANCE;
-    public Partner() {
+    public PlayerPartner() {
         super(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);
     }
 
