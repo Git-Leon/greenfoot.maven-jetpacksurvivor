@@ -14,6 +14,7 @@ public class SubSpriteWorld extends SpriteWorld {
     @Override
     public void init() {
         createGround();
+        addObject(new P1(), 0, 0);
         addObject(new EnemyMaterializer(1F), getWidth() - 40, 60);
         addObject(new P1Partner(), 0, 0);
     }
@@ -24,6 +25,5 @@ public class SubSpriteWorld extends SpriteWorld {
             int xOffset = platform.getImage().getWidth() / 2;
             addObject(platform, i * xOffset, getHeight());
         }
-        addObject(new P1(), getWidth() / 2, getHeight() / 2);
     }
 }

@@ -2,6 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.enemi
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
 
 public class Bat extends Enemy {
 

@@ -10,11 +10,11 @@ import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluen
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 
 public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Ally {
-    private int runSpeed;
-    private float verticalSpeed;
-    private SpriteCreatorRemover spriteCreator;
+    private final SpriteCreatorRemover spriteCreator;
     private final Gun gun;
     private Rocket rocket;
+    private int runSpeed;
+    private float verticalSpeed;
 
     public P1() {
         super("player/walk/walk", ".png", 6);
