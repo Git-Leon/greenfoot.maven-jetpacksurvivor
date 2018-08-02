@@ -65,15 +65,15 @@ public class Loot extends SubActor {
                 update("shoot", p.setShotDelay(shotdelay += shotdelay*(9/10) ) );
 
             } else if(is("extended_mag"))
-                p.magsize++;
+                p.increaseMagSize();
             else if(is("jetpack_thrust")) 
-                p.thrust++;
+                p.increaseThrust();
             else if(is("bullet_speed"))
-                p.bulletspeed++;           
+                p.increaseBulletSpeed();
             else if(is("run_speed")) {
-                p.runspeed++;
-                if(p.runspeed >= p.bulletspeed)
-                    p.bulletspeed++;
+                p.increaseRunSpeed();
+                if(p.getRunSpeed() >= p.getBulletspeed())
+                    p.increaseBulletSpeed();
 
             }
             //if(is("life_power"))

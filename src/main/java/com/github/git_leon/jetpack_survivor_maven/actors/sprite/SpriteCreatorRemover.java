@@ -2,11 +2,15 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite;
 
 import java.util.function.Predicate;
 
-public class SpriteRemover {
+public class SpriteCreatorRemover {
     private final Sprite sprite;
 
-    public SpriteRemover(Sprite sprite) {
+    public SpriteCreatorRemover(Sprite sprite) {
         this.sprite = sprite;
+    }
+
+    public void destroy() {
+        destroy(sprite);
     }
 
     public void destroy(Sprite sprite) {
@@ -15,11 +19,9 @@ public class SpriteRemover {
 
     public void destroy(Predicate<Sprite> predicate, Sprite sprite) {
         if (predicate.test(sprite)) {
-            if(sprite != null)
-                sprite.getWorld().removeSprite(sprite);
+            this.sprite.getWorld().removeSprite(sprite);
         }
     }
-
 
     public void add(Sprite sprite) {
         add((x) -> true, sprite);
@@ -27,7 +29,7 @@ public class SpriteRemover {
 
     public void add(Predicate<Sprite> predicate, Sprite sprite) {
         if (predicate.test(sprite)) {
-            sprite.getWorld().removeSprite(sprite);
+            this.sprite.getWorld().addSprite(sprite, this.sprite.getX(), this.sprite.getY());
         }
     }
 }

@@ -4,22 +4,13 @@ package com.github.git_leon.jetpack_survivor_maven.actors;
 
 public class CoolDown {
     private String methodname;
-    private double maxlife, birthTime;
-    private boolean isAvailable;
-
-    private void init(String methodname, double maxlife) {
-        this.birthTime = System.currentTimeMillis();
-        this.isAvailable = true;
-        this.methodname = methodname;
-        this.maxlife = maxlife;
-    }
+    private double maxlife;
+    private double birthTime;
 
     public CoolDown(String methodname, double maxlife) {
-        init(methodname, maxlife);
-    }
-
-    public CoolDown(String methodname) {
-        init(methodname, 5);
+        this.birthTime = System.currentTimeMillis();
+        this.methodname = methodname;
+        this.maxlife = maxlife;
     }
 
     public boolean isAvailable() {
@@ -39,10 +30,6 @@ public class CoolDown {
 
     private double elapsed() {
         return System.currentTimeMillis() - birthTime;
-    }
-
-    private double maxLife() {
-        return this.maxlife;
     }
 
     public void setMaxLife(double val) {

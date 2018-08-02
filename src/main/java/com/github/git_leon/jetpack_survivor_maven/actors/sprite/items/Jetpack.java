@@ -1,6 +1,7 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import greenfoot.*;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
@@ -24,7 +25,7 @@ public class Jetpack extends SubActor {
         if(is("jetpack")) {
             setImage(IMAGES.getImage("rocket.png"));
 //            gs.play();
-            shadow(getPlayer());
+            shadow(Player.INSTANCE);
             if(!Util.keyDown("e")) {
 //                gs.stop();
 //                gs.setVolume(0);

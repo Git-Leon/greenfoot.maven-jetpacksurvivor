@@ -11,7 +11,6 @@ import java.util.Arrays;
 public class DemoApp   {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(args));
-        MockGreenfootRunner.main(args);
         try {
             new JFootApplication(args).run();
         } catch (IOException e) {

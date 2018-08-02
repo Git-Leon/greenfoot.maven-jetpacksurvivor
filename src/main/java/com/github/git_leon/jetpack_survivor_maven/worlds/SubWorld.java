@@ -2,21 +2,20 @@ package com.github.git_leon.jetpack_survivor_maven.worlds;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.EnemyGenerator;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.PlayerPartner;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.DeprecatedProjectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
 import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
 
 public class SubWorld extends SpriteWorld {
-    Partner partner = null;
+    PlayerPartner partner = null;
     Player player = null;
     private long birth = System.currentTimeMillis();
     private GreenfootSound gameExecutionMusic = SOUNDS.getSound("music0.mp3");
@@ -28,31 +27,6 @@ public class SubWorld extends SpriteWorld {
         mode(1);
     }
 
-    private SubWorld(
-            int shotdelay, int firerate, int magsize, int thrust,
-            int fuel, int jumpstrength, int bulletspeed, int runspeed,
-            int lootchance) {
-        super(800, 300, 1);
-        custom(shotdelay, firerate, magsize, thrust,
-                fuel, jumpstrength, bulletspeed, runspeed, lootchance);
-    }
-
-    private void custom(
-            int shotdelay, int firerate, int magsize, int thrust,
-            int fuel, int jumpstrength, int bulletspeed, int runspeed,
-            int lootchance) {
-        makeGround();
-        Projectile.lootchance = lootchance;
-        this.player = new Player(shotdelay, firerate, magsize, thrust,
-                fuel, jumpstrength, bulletspeed, runspeed);
-        addObject(player, 174, 50);
-        addObject(new Jetpack(), 174, 50);
-        addObject(new Menu(), getWidth() / 2, getHeight() / 2);
-
-        Menu playerInfo = new Menu(true);
-        addObject(playerInfo, playerInfo.getImage().getWidth() / 2, playerInfo.getImage().getHeight() / 2);
-    }
-
     public void act() {
 //        addEnemy(0);
     }
@@ -61,12 +35,12 @@ public class SubWorld extends SpriteWorld {
         return this.player;
     }
 
-    public Partner getPartner() {
+    public PlayerPartner getPartner() {
         return this.partner;
     }
 
     private void mode(int num) {
-        setPaintOrder(Player.class, Npc.class, Loot.class);
+        setPaintOrder(Player.class, Loot.class);
 //        gameOverMusic.stop();
         //gameExecutionMusic.playLoop();
         switch (num) {
@@ -91,16 +65,16 @@ public class SubWorld extends SpriteWorld {
 
     private void makeGround() {
         for (int i = 0; i < 13; i++) {
-            Platform platform = new Platform("bricks1.jpg");
+            Platform platform = new Platform();
             addObject(platform, i * 64, getHeight());
         }
     }
 
     private void classic() {
         makeGround();
-        Projectile.lootchance = 66;
+        DeprecatedProjectile.lootchance = 66;
         this.player = Player.INSTANCE;
-        this.partner = new Partner();
+        this.partner = new PlayerPartner();
         addObject(player, 174, 50);
         addObject(partner, getX(player) - 50, getY(player) + 100);
         addObject(new Jetpack(), 174, 50);

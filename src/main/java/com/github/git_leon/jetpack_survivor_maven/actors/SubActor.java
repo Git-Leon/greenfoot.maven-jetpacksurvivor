@@ -1,11 +1,11 @@
 package com.github.git_leon.jetpack_survivor_maven.actors;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.PlayerPartner;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.worlds.SubWorld;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.DeprecatedProjectile;
 
 import java.util.List;
 /**
@@ -82,10 +82,10 @@ public class SubActor extends Actor{
     }
 
     public Player getPlayer() {
-        return ((SubWorld)getWorld()).getPlayer();
+        return Player.INSTANCE;
     }
 
-    public Partner getPartner() {
+    public PlayerPartner getPartner() {
         return ((SubWorld)getWorld()).getCurrentWorld().getPartner();
     }
 
@@ -180,12 +180,12 @@ public class SubActor extends Actor{
         if(atWorldEdge(x,y)) getWorld().removeObject(this);
     }
 
-    public Projectile shoot(int velocity) {
-        return (Projectile)addObject(new Projectile(velocity), getX(), getY());
+    public DeprecatedProjectile shoot(int velocity) {
+        return (DeprecatedProjectile)addObject(new DeprecatedProjectile(velocity), getX(), getY());
     }
 
-    public Projectile shoot(int velocity, Actor actor) {
-        Projectile projectile = (Projectile)addObject(shoot(velocity), getX(), getY());
+    public DeprecatedProjectile shoot(int velocity, Actor actor) {
+        DeprecatedProjectile projectile = (DeprecatedProjectile)addObject(shoot(velocity), getX(), getY());
         projectile.faceObject(actor);
         return projectile;
     }

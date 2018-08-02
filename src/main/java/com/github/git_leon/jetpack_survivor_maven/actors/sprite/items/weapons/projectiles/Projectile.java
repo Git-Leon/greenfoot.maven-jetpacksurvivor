@@ -1,88 +1,56 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteRemover;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
-import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.NPCInterface;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import com.github.git_leon.jetpack_survivor_maven.utils.Util;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 
-public class Projectile extends Sprite {
-//    private final SpriteDestroyer spriteDestroyer;
-    private final SpriteRemover spriteDestroyer;
-    private int speed;
-    private Class enemy;
-    public static int lootchance;
+import java.util.function.Supplier;
 
+public abstract class Projectile<VictimClass extends Sprite> extends Sprite implements ProjectileInterface {
+    private final Class<VictimClass> victimClass;
+    private int speed = 5;
+    private SpriteCreatorRemover spriteCreatorRemover;
 
-    public Projectile(int speed) {
-        this(speed, Enemy.class);
-    }
-
-    public Projectile(int speed, Class<? extends NPCInterface> cls) {
+    public Projectile(Class<VictimClass> cls) {
         super("ant.png");
-        this.speed = speed;
-        this.enemy = cls;
-//        this.spriteDestroyer = new SpriteDestroyer(this.getWorld());
-        this.spriteDestroyer = new SpriteRemover(this);
+        this.spriteCreatorRemover = new SpriteCreatorRemover(this);
+        this.victimClass = cls;
     }
-
 
     public void act() {
         move(speed);
-        hit(0, Enemy.class);
+        hit(victimClass);
+        disintegrate(
+                super::isAtEdge,
+                this::isCollidingWithVictim);
     }
 
-    public Projectile setSpeed(int val) {
-        this.speed = val;
-        return this;
+    @Override
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
-    private void hit(int dmg, Class cls) {
-        Sprite actor = getOneIntersectingObject(cls);
-        if (worldSensor.atWorldEdge(3)) {
-            die();
-        } else if (actor != null) {
-            spriteDestroyer.destroy(actor);
-            addLoot(100);
-            Player.INSTANCE.kills++;
-            die();
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    private void hit(Class<? extends Sprite> cls) {
+        Sprite sprite = getOneIntersectingObject(cls);
+        if (sprite != null) {
+            spriteCreatorRemover.destroy(sprite);
         }
     }
 
-    private void addLoot(int percentchance) {
-        if (Util.chance(percentchance)) //&& Menu.score() < 100)for(int i=0; i<100; i++)
-            addObject(new Loot(), getX(), getY());
+    private boolean isCollidingWithVictim() {
+        return getOneIntersectingObject(victimClass) != null;
     }
 
-    @Deprecated
-    private void addObject(Actor sprite, int x, int y) {
-        getWorld().addObject(sprite, x, y);
-    }
-
-    private void die() {
-        addObject(new SubActor("explosion/", ".png", 14) {
-            public void act() {
-                animate(2);
-                if (getCurImage() >= getImages().length - 1) {
-                    kill(this);
-                }
+    private void disintegrate(Supplier<Boolean>... conditions) {
+        for (Supplier<Boolean> spriteCondition : conditions) {
+            if (spriteCondition.get()) {
+                spriteCreatorRemover.destroy(this);
+                return;
             }
-        }, getX(), getY());
-//        Greenfoot.playSound("vaporize.mp3");
-        spriteDestroyer.destroy(this);
-    }
-
-    @Deprecated
-    public void faceObject(Actor sprite) {
-        faceObject(sprite);
-    }
-
-    public void faceObject(Sprite sprite) {
-        new SpriteSensorDecorator<>(this).faceSprite(sprite);
+        }
     }
 }

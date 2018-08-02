@@ -1,32 +1,32 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.DeprecatedProjectile;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
 import java.util.List;
 
 /**
- * Write a description of class Partner here.
+ * Write a description of class PlayerPartner here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Partner extends Npc {
+public class PlayerPartner extends AnimatedSprite implements Ally {
     private Player player = Player.INSTANCE;
-    public Partner() {
+    public PlayerPartner() {
         super(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);
     }
 
-    public void act() {
+    public void postAnimationBehavior() {
         animate(6);
         try {
 
             setLocation(player.getX()-50, player.getY()-75);
             if(Util.keyDown("q") )
-                shot(player.bulletspeed * 3);
+                shot(player.getBulletspeed() * 3);
         } catch(NullPointerException npe) {} catch(IllegalStateException ise) {}
     }
 
@@ -35,7 +35,7 @@ public class Partner extends Npc {
     }
 
     public void shot(int speed) {
-        Projectile bullet = player.fire(speed).setSpeed(speed);
+        DeprecatedProjectile bullet = player.fire(speed).setSpeed(speed);
         bullet.setLocation(getX(), getY());
         List<Enemy> list = player.getObjects(Enemy.class);
         int index = Util.ran(2) == 1 ? list.size()-1 : 0;

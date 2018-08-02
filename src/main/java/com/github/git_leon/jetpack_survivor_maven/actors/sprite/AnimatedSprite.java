@@ -8,6 +8,8 @@ import java.util.List;
 public abstract class AnimatedSprite extends Sprite {
     protected int lifetime;
     private int currentImageIndex = 0;
+    protected boolean flippedHorizontally;
+    protected boolean flippedVertically;
 
     public AnimatedSprite(String basename, String suffix, int noOfImages) {
         super(createImages(basename, suffix, noOfImages));
@@ -17,29 +19,35 @@ public abstract class AnimatedSprite extends Sprite {
         super(imageList);
     }
 
+    @Override
+    public final void act() {
+        animate();
+        postAnimationBehavior();
+    }
+    abstract public void postAnimationBehavior();
 
     public void animate(int frequency) {
-        if (lifetime % frequency == 1) {
-            animate();
+        if (lifetime % frequency == 0) {
+            currentImageIndex++;
+            currentImageIndex %= imageList.size();
+            setImage(imageList.get(currentImageIndex));
         }
         lifetime++;
     }
 
     public void animate() {
-        if (imageList != null) {
-            currentImageIndex++;
-            currentImageIndex %= imageList.size();
-            setImage(imageList.get(currentImageIndex));
-        }
+        animate(1);
     }
 
 
     public void flipImagesHorizontally() {
         imageList.forEach(image -> image.mirrorHorizontally());
+        this.flippedHorizontally = !flippedHorizontally;
     }
 
     public void flipImagesVertically() {
         imageList.forEach(image -> image.mirrorVertically());
+        this.flippedVertically = !flippedVertically;
     }
 
     public static List<GreenfootImage> createImages(String basename, String suffix, int noOfImages) {
