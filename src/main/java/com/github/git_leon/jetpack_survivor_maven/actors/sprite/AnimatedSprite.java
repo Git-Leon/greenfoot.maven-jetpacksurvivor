@@ -24,7 +24,6 @@ public abstract class AnimatedSprite extends Sprite {
         animate();
         postAnimationBehavior();
     }
-
     abstract public void postAnimationBehavior();
 
     public void animate(int frequency) {

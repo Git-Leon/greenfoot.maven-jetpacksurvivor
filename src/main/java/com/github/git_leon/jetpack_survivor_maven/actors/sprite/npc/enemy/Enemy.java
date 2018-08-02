@@ -7,6 +7,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDeco
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Ally;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1;
+import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluenceeInterface;
 
 public abstract class Enemy extends AnimatedSprite implements GravityInfluenceeInterface, EnemyInterface {
@@ -22,9 +23,14 @@ public abstract class Enemy extends AnimatedSprite implements GravityInfluenceeI
 
     @Override
     public void postAnimationBehavior() {
+        applyGravity();
         moveLeft(1);
         spriteRemover.destroy(getOneIntersectingObject(Ally.class));
         spriteRemover.destroy(Sprite::isAtEdge, this);
+    }
+
+    protected void applyGravity() {
+        Gravity.applyNormal(this);
     }
 
     @Override

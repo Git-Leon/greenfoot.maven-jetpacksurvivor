@@ -1185,9 +1185,9 @@ public enum JFootKey {
 
     public <ArgType1> void onKeyPress(
             Consumer<ArgType1> func,
-            ArgType1 argType1) {
+            ArgType1 arg1) {
         if (isKeyDown())
-            func.accept(argType1);
+            func.accept(arg1);
     }
 
     public void onKeyPress(Runnable runnable) {

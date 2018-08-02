@@ -5,6 +5,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRem
 
 public class Gun {
     private SpriteCreatorRemover bulletCreator;
+
     public Gun(Sprite gunner) {
         this.bulletCreator = new SpriteCreatorRemover(gunner);
     }
@@ -14,5 +15,4 @@ public class Gun {
         bullet.setSpeed(bulletSpeed);
         bulletCreator.add(bullet);
     }
-
 }

@@ -3,6 +3,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Bullet;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Gun;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluenceeInterface;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
@@ -10,12 +11,12 @@ import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 // TODO
 public class P1 extends Ally implements GravityInfluenceeInterface {
     private int runSpeed;
-    private final SpriteCreatorRemover bulletCreator;
+    private final Gun gun;
     private float verticalSpeed;
 
     public P1() {
         super("player/walk/walk", ".png", 6);
-        this.bulletCreator = new SpriteCreatorRemover(this);
+        this.gun = new Gun(this);
         this.runSpeed = 2;
     }
 
@@ -74,7 +75,7 @@ public class P1 extends Ally implements GravityInfluenceeInterface {
 
 
     public void controls() {
-        JFootKey.S.onKeyPress(this::shoot);
+        JFootKey.S.onKeyPress(gun::shoot, 5);
         JFootKey.LEFT.onKeyPress(this::moveLeft, runSpeed);
         JFootKey.RIGHT.onKeyPress(this::moveRight, runSpeed);
         JFootKey.DOWN.onKeyPress(this::moveDown, runSpeed);
@@ -82,10 +83,6 @@ public class P1 extends Ally implements GravityInfluenceeInterface {
             moveUp(1);
             setVerticalSpeed(-10F);
         }
-    }
-
-    private void shoot() {
-        bulletCreator.add(new Bullet());
     }
 
 

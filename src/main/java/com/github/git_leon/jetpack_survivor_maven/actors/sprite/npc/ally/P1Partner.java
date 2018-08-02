@@ -1,5 +1,6 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Gun;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
@@ -15,7 +16,7 @@ public class P1Partner extends Ally {
 
     @Override
     public void postAnimationBehavior() {
-        JFootKey.Q.onKeyPress(()->gun.shoot(1));
+        JFootKey.Q.onKeyPress(() -> gun.shoot(5));
         shadowPlayer();
     }
 

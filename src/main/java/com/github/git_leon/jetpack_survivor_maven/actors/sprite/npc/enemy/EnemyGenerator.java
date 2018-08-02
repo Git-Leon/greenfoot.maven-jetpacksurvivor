@@ -6,12 +6,12 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.enemie
 import java.util.function.Supplier;
 
 public enum EnemyGenerator {
-    BAT(Bat::new);
-//    MUMMY(Mummy::new),
-//    FIEND_CRAWLER(FiendCrawler::new),
-//    ORC_RIDER(OrcRider::new),
-//    ZOMBIE_CRAWLER(ZombieCrawler::new),
-//    ZOMBIE_GUNNER(ZombieGunner::new);
+    BAT(Bat::new),
+    MUMMY(Mummy::new),
+    FIEND_CRAWLER(FiendCrawler::new),
+    ORC_RIDER(OrcRider::new),
+    ZOMBIE_CRAWLER(ZombieCrawler::new),
+    ZOMBIE_GUNNER(ZombieGunner::new);
     private final Supplier<Enemy> enemySupplier;
 
     EnemyGenerator(Supplier<Enemy> enemySupplier) {
