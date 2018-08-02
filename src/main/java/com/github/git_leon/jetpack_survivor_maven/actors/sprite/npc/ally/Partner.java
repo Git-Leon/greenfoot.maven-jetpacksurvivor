@@ -2,7 +2,6 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
@@ -14,7 +13,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Partner extends Npc {
+public class Partner extends Ally {
     private Player player = Player.INSTANCE;
     public Partner() {
         super(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);

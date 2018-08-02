@@ -1,80 +1,49 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy;
 
-import com.github.git_leon.jetpack_survivor_maven.utils.Util;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Ally;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1;
+import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluenceeInterface;
 
-public class Enemy extends Npc {
-    private String[] types = {
-            "mummy", "orc_rider", "bat",
-            "zombie_gunner", "zombie_crawler",
-            "fiend_crawler"};
-    private String type;
-    private boolean h_flip = true, v_flip = true;
+public abstract class Enemy extends AnimatedSprite implements GravityInfluenceeInterface, EnemyInterface {
+    private final SpriteCreatorRemover spriteRemover;
+    protected final SpriteSensorDecorator<P1> spriteSensor;
+    private float verticalSpeed;
 
-    private void init(String prefix, String suffix, int numberOfImages) {
-        adapterPiece.setAnimation(prefix, suffix, numberOfImages);
+    public Enemy(String basename, String suffix, int noOfImages) {
+        super(basename, suffix, noOfImages);
+        this.spriteRemover = new SpriteCreatorRemover(this);
+        this.spriteSensor = new SpriteSensorDecorator<>(this);
     }
 
-    private void constructor() {
-        if(is("zombie_gunner")) { //Zombie Gunner Constructor
-            init("npc/zombie_gunner/", ".png", 13);
-            adapterPiece.flipImages(h_flip, !v_flip);
-        }
-        else if( is("orc_rider") ) { //Orc Rider Constructor
-            init("npc/orc_rider/", ".png", 2);
-            adapterPiece.flipImages(!h_flip, !v_flip);
-        }
-        else if( is("bat") ) { //Bat Constructor
-            init("npc/bat/", ".png", 10);
-            adapterPiece.flipImages(h_flip, v_flip);
-        }
-        else if( is("mummy") ) {
-            init("npc/mummy/", ".png", 17);
-            adapterPiece.flipImages(h_flip, !v_flip);
-        }
-        else if( is("zombie_crawler")) {
-            init("npc/zombie_crawler/", ".png", 12);
-            adapterPiece.flipImages(h_flip, !v_flip);
-        }
-        else if( is("fiend_crawler")) {
-            init("npc/fiend_crawler/", ".png", 5);            
-        }
-    }
-
-    public Enemy() {
-        super(MobGenerator.getRandom().getImages());
-        this.type = types[ Util.ran(types.length) ];
-        constructor();
-    }
-
+    @Override
     public void postAnimationBehavior() {
-        try {
-            //facePlayer(100);
-            if(is("orc_rider")) {
-                touchGround();
-                act(5, 10, 1);
-            } else if(is("mummy")) {
-                touchGround();
-                act(Util.ran(2), Util.ran(3)+1, 1);
-            } else if(is("zombie_gunner")) {
-                adapterPiece.checkFall();
-                if(adapterPiece.onGround() && Util.chance(1))
-                    adapterPiece.jump(15);
-                act(1, 3, 1);
-            } else if(is("bat")) {
-                facePlayer(20);
-                act(-5, 3, 1);
-            } else if(is("zombie_crawler")) {
-                touchGround();
-                act(1,3,1);
-            } else if(is("fiend_crawler")) {
-                touchGround();
-                act(4, 2, 1);
-            }
-        } catch(IllegalStateException ise) {}
-        catch(NullPointerException npe) {}
+        moveLeft(1);
+        spriteRemover.destroy(getOneIntersectingObject(Ally.class));
+        spriteRemover.destroy(Sprite::isAtEdge, this);
     }
 
-    private boolean is(String type) {
-        return Util.compare(this.type, type);
+    @Override
+    public Float getVerticalSpeed() {
+        return verticalSpeed;
+    }
+
+    @Override
+    public void setVerticalSpeed(Float i) {
+        this.verticalSpeed = i;
+    }
+
+    @Override
+    public float getTerminalSpeed() {
+        return 3;
+    }
+
+    @Override
+    public boolean isOnGround() {
+        return getOneIntersectingObject(Platform.class) != null;
     }
 }

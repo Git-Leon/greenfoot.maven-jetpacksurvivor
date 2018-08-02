@@ -1,6 +1,11 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite;
 
+import com.github.git_leon.collectionutils.maps.InvertableMap;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 public class SpriteSensorDecorator<SpriteSubType extends Sprite> {
 
@@ -17,44 +22,20 @@ public class SpriteSensorDecorator<SpriteSubType extends Sprite> {
             int deltaX = obj.getX() - sprite.getX();
             int deltaY = obj.getY() - sprite.getY();
             sprite.setRotation((int) (180 * Math.atan2(deltaY, deltaX) / Math.PI));
-        } else {
-            return;
         }
     }
 
-
-    public void faceNearest(Class<SpriteSubType> cls, int radius) {
-        SpriteSubType actor = getNearest(cls, radius);
-        faceSprite(actor);
-    }
 
     public void faceNearest(Class<SpriteSubType> cls) {
-        int worldHeight = sprite.getWorld().getHeight();
-        int worldWidth = sprite.getWorld().getWidth();
-        faceNearest(cls, worldWidth*worldHeight);
+        faceSprite(getNearest(cls));
     }
 
-    public SpriteSubType getNearest(Class<SpriteSubType> cls, int radius) {
+    public SpriteSubType getNearest(Class<SpriteSubType> cls) {
         List<SpriteSubType> actors = sprite.getWorld().getObjects(cls);
         // TODO - Test below implementation
-//        Map<SpriteSubType, Double> distanceMap = new HashMap<>();
-//        actors.forEach(actor -> distanceMap.put(actor, getDistance(actor));
-//        return new TreeSet<>(distanceMap.keySet()).pollFirst();
-        SpriteSubType nearestActor = null;
-        Double nearestDistance = null;
-        double distance;
-        int size = actors.size();
-        for (int i = 0; i < size; i++) {
-            distance = getDistance(actors.get(i));
-            if (i == 0) {
-                nearestDistance = distance;
-            }
-            if (distance < nearestDistance) {
-                nearestActor = actors.get(i);
-                nearestDistance = distance;
-            }
-        }
-        return nearestActor;
+        InvertableMap<SpriteSubType, Double> distanceMap = new InvertableMap<>();
+        actors.forEach(actor -> distanceMap.put(actor, getDistance(actor)));
+        return distanceMap.invertMap().get(new TreeSet<>(distanceMap.values()).pollFirst());
     }
 
     public List<SpriteSubType> getObjectsInRange(Class<SpriteSubType> cls, int radius) {

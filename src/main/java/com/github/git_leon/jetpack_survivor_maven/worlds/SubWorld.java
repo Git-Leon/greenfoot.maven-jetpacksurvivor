@@ -2,13 +2,12 @@ package com.github.git_leon.jetpack_survivor_maven.worlds;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.MobGenerator;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.EnemyGenerator;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Partner;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Npc;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
@@ -41,7 +40,7 @@ public class SubWorld extends SpriteWorld {
     }
 
     private void mode(int num) {
-        setPaintOrder(Player.class, Npc.class, Loot.class);
+        setPaintOrder(Player.class, Loot.class);
 //        gameOverMusic.stop();
         //gameExecutionMusic.playLoop();
         switch (num) {
@@ -121,7 +120,7 @@ public class SubWorld extends SpriteWorld {
     private void addEnemy(int num) {
         boolean b = count(Enemy.class) < (Menu.score / 10) + 1;
         if (b)
-            addObject(MobGenerator.getRandom(), getWidth() - 50, 50);
+            addObject(EnemyGenerator.getRandom(), getWidth() - 50, 50);
     }
 
     public SubWorld getCurrentWorld() {
