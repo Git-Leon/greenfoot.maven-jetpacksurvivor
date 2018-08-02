@@ -10,7 +10,7 @@ import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluen
 
 public abstract class Mob extends AnimatedSprite implements GravityInfluenceeInterface {
     private final SpriteCreatorRemover spriteRemover;
-    private final SpriteSensorDecorator<Ally> spriteSensor;
+    protected final SpriteSensorDecorator<Ally> spriteSensor;
     private float verticalSpeed;
 
     public Mob(String basename, String suffix, int noOfImages) {

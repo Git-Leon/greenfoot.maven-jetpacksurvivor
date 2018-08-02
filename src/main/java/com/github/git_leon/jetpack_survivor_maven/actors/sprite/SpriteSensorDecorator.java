@@ -28,6 +28,12 @@ public class SpriteSensorDecorator<SpriteSubType extends Sprite> {
         faceSprite(actor);
     }
 
+    public void faceNearest(Class<SpriteSubType> cls) {
+        int worldHeight = sprite.getWorld().getHeight();
+        int worldWidth = sprite.getWorld().getWidth();
+        faceNearest(cls, worldWidth*worldHeight);
+    }
+
     public SpriteSubType getNearest(Class<SpriteSubType> cls, int radius) {
         List<SpriteSubType> actors = sprite.getWorld().getObjects(cls);
         // TODO - Test below implementation

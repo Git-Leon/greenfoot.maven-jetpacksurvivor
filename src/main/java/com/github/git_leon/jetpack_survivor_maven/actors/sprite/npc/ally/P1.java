@@ -1,6 +1,5 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Bullet;
@@ -57,12 +56,28 @@ public class P1 extends Ally implements GravityInfluenceeInterface {
         return getOneIntersectingObject(Platform.class) != null;
     }
 
+    @Override
+    public void moveRight(int xOffset) {
+        super.moveRight(xOffset);
+        if(!super.flippedHorizontally) {
+            flipImagesHorizontally();
+        }
+    }
+
+    @Override
+    public void moveLeft(int xOffset) {
+        super.moveLeft(xOffset);
+        if(super.flippedHorizontally) {
+            flipImagesHorizontally();
+        }
+    }
+
 
     public void controls() {
         JFootKey.S.onKeyPress(this::shoot);
-        JFootKey.LEFT.onKeyPress(super::moveLeft, runSpeed);
-        JFootKey.RIGHT.onKeyPress(super::moveRight, runSpeed);
-        JFootKey.DOWN.onKeyPress(super::moveDown, runSpeed);
+        JFootKey.LEFT.onKeyPress(this::moveLeft, runSpeed);
+        JFootKey.RIGHT.onKeyPress(this::moveRight, runSpeed);
+        JFootKey.DOWN.onKeyPress(this::moveDown, runSpeed);
         if (isOnGround() && JFootKey.UP.isKeyDown()) {
             moveUp(1);
             setVerticalSpeed(-10F);

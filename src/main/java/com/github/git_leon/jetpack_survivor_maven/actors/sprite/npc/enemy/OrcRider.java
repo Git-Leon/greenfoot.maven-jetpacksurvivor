@@ -5,4 +5,9 @@ public class OrcRider extends Mob {
         super(  "npc/orc_rider/", ".png", 2);
     }
 
+    @Override
+    public void animate() {
+        animate(5);
+    }
+
 }
