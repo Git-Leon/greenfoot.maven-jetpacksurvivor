@@ -1,6 +1,7 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.DeprecatedProjectile;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerPartner extends Ally {
+public class PlayerPartner extends AnimatedSprite implements Ally {
     private Player player = Player.INSTANCE;
     public PlayerPartner() {
         super(Resources.IMAGES.toString() + "npc/partner1/", ".png", 7);
@@ -34,7 +35,7 @@ public class PlayerPartner extends Ally {
     }
 
     public void shot(int speed) {
-        Projectile bullet = player.fire(speed).setSpeed(speed);
+        DeprecatedProjectile bullet = player.fire(speed).setSpeed(speed);
         bullet.setLocation(getX(), getY());
         List<Enemy> list = player.getObjects(Enemy.class);
         int index = Util.ran(2) == 1 ? list.size()-1 : 0;

@@ -9,7 +9,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.PlayerPartner;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.Menu;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.DeprecatedProjectile;
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 
 import static com.github.git_leon.jetpack_survivor_maven.system.resources.Resources.SOUNDS;
@@ -72,7 +72,7 @@ public class SubWorld extends SpriteWorld {
 
     private void classic() {
         makeGround();
-        Projectile.lootchance = 66;
+        DeprecatedProjectile.lootchance = 66;
         this.player = Player.INSTANCE;
         this.partner = new PlayerPartner();
         addObject(player, 174, 50);

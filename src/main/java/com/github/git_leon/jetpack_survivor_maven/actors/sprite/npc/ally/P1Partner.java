@@ -1,11 +1,13 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Gun;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Projectile;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 
-public class P1Partner extends Ally {
+public class P1Partner extends AnimatedSprite implements Ally {
     private P1 player;
     private Gun gun;
 
@@ -16,8 +18,14 @@ public class P1Partner extends Ally {
 
     @Override
     public void postAnimationBehavior() {
-        JFootKey.Q.onKeyPress(() -> gun.shoot(5));
+        JFootKey.Q.onKeyPress(this::shoot);
         shadowPlayer();
+    }
+
+    private void shoot() {
+        Projectile b = gun.shoot(5);
+        SpriteSensorDecorator<Enemy> bulletRedirector = new SpriteSensorDecorator<Enemy>(b);
+        bulletRedirector.faceNearest(Enemy.class);
     }
 
     private void shadowPlayer() {

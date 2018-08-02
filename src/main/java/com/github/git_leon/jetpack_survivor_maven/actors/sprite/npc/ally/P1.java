@@ -1,15 +1,14 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Bullet;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.weapons.projectiles.Gun;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
 import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluenceeInterface;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 
 // TODO
-public class P1 extends Ally implements GravityInfluenceeInterface {
+public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Ally {
     private int runSpeed;
     private final Gun gun;
     private float verticalSpeed;

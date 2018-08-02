@@ -10,9 +10,10 @@ public class Gun {
         this.bulletCreator = new SpriteCreatorRemover(gunner);
     }
 
-    public void shoot(int bulletSpeed) {
-        Bullet bullet = new Bullet();
-        bullet.setSpeed(bulletSpeed);
-        bulletCreator.add(bullet);
+    public Projectile shoot(int bulletSpeed) {
+        Projectile projectile = new Bullet();
+        projectile.setSpeed(bulletSpeed);
+        bulletCreator.add(projectile);
+        return projectile;
     }
 }
