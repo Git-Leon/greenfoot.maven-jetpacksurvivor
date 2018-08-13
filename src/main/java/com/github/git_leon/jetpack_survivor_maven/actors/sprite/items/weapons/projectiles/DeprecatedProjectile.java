@@ -6,7 +6,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.NPCInterface;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.WeightedEnemy;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.utils.Util;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
@@ -19,7 +19,7 @@ public class DeprecatedProjectile extends Sprite {
 
 
     public DeprecatedProjectile(int speed) {
-        this(speed, Enemy.class);
+        this(speed, WeightedEnemy.class);
     }
 
     public DeprecatedProjectile(int speed, Class<? extends NPCInterface> cls) {
@@ -31,7 +31,7 @@ public class DeprecatedProjectile extends Sprite {
 
     public void act() {
         move(speed);
-        hit(0, Enemy.class);
+        hit(0, WeightedEnemy.class);
     }
 
     public DeprecatedProjectile setSpeed(int val) {

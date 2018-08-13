@@ -39,7 +39,7 @@ public class SpriteSensorDecorator<SpriteSubType extends Sprite> {
     }
 
     public List<SpriteSubType> getObjectsInRange(Class<SpriteSubType> cls, int radius) {
-        return getObjectsInRange(cls, radius);
+        return null;
     }
 
     public double getDistance(SpriteSubType actor) {

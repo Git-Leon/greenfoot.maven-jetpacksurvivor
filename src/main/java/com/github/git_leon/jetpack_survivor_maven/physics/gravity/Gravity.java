@@ -15,7 +15,7 @@ public enum Gravity {
 
     private void addGravity(GravityInfluenceeInterface sprite, int magnitude) {
         float verticalSpeed = sprite.getVerticalSpeed();
-        if (verticalSpeed > sprite.getTerminalSpeed())
+        if (verticalSpeed * forceConstant > sprite.getTerminalSpeed())
             verticalSpeed = sprite.getTerminalSpeed();
         sprite.setVerticalSpeed(verticalSpeed + (forceConstant * magnitude));
     }

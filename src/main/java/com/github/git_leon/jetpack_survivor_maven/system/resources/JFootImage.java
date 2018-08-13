@@ -5,18 +5,18 @@ import greenfoot.GreenfootImage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResourceImage extends GreenfootImage {
+public class JFootImage extends GreenfootImage {
     private static final Map<String, GreenfootImage> imageMap = new HashMap<>();
 
-    public ResourceImage(String filename) throws IllegalArgumentException {
+    public JFootImage(String filename) throws IllegalArgumentException {
         super(filename);
     }
 
-    public ResourceImage(int width, int height) {
+    public JFootImage(int width, int height) {
         super(width, height);
     }
 
-    public ResourceImage(GreenfootImage image) throws IllegalArgumentException {
+    public JFootImage(GreenfootImage image) throws IllegalArgumentException {
         super(image);
     }
 

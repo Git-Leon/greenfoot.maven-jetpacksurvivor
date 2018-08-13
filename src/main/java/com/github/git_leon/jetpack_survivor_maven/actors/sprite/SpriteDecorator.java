@@ -10,6 +10,7 @@ public class SpriteDecorator extends Sprite implements SpriteWrapper {
     protected final Sprite sprite;
 
     public SpriteDecorator(Sprite sprite) {
+        super(sprite.getImage());
         this.sprite = sprite;
     }
 

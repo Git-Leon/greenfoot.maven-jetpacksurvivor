@@ -17,7 +17,7 @@ public abstract class Sprite extends Actor implements SpriteInterface {
         this(new String[]{imageName});
     }
 
-    public Sprite(String... imageNames) {
+    public Sprite(String[] imageNames) {
         this.imageList = new ArrayList<>();
         List<String> imageNameList = new ArrayList<>(Arrays.asList(imageNames));
         imageNameList.forEach(image -> this.imageList.add(new GreenfootImage(image)));
@@ -35,6 +35,10 @@ public abstract class Sprite extends Actor implements SpriteInterface {
     public Sprite(List<GreenfootImage> imageList) {
         this.imageList = imageList;
         setImage(imageList.get(0));
+    }
+
+    public Sprite(GreenfootImage image) {
+        this(Arrays.asList(image));
     }
 
     public void moveLeft(int xOffset) {

@@ -2,7 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.CoolDown;
 import com.github.git_leon.jetpack_survivor_maven.actors.SubActor;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.WeightedEnemy;
 import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
 import com.github.git_leon.jetpack_survivor_maven.system.resources.Resources;
 import greenfoot.*;
@@ -77,9 +77,9 @@ public class Player extends SubActor {
     }
 
     private void endGame() {
-        Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
+        WeightedEnemy enemy = (WeightedEnemy) getOneIntersectingObject(WeightedEnemy.class);
         if (enemy != null) {
-            boolean a = getOneObjectAtOffset(0, 0, Enemy.class) != null;
+            boolean a = getOneObjectAtOffset(0, 0, WeightedEnemy.class) != null;
             boolean b = enemy.getOneObjectAtOffset(0, 0, Player.class) != null;
             if (a || b)
                 die();

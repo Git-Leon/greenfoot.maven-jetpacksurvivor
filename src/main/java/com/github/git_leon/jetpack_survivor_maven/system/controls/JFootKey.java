@@ -268,7 +268,7 @@ public enum JFootKey {
     /**
      * Constant for the {@code P} key.
      */
-    P(KeyCode.Q),
+    P(KeyCode.P),
 
     /**
      * Constant for the {@code Q} key.
@@ -1148,6 +1148,9 @@ public enum JFootKey {
 
     JFootKey(KeyCode keyCode) {
         this.keyCode = keyCode;
+        System.out.println("\n--------------------");
+        System.out.println("Name = " + getName());
+        System.out.println("Key Code = " + keyCode);
     }
 
     public static boolean isAnyKeyDown(JFootKey... keys) {

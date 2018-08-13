@@ -2,7 +2,7 @@ package com.github.git_leon.jetpack_survivor_maven.worlds;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Jetpack;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Player;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.WeightedEnemy;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.EnemyGenerator;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Loot;
@@ -118,7 +118,7 @@ public class SubWorld extends SpriteWorld {
     }
 
     private void addEnemy(int num) {
-        boolean b = count(Enemy.class) < (Menu.score / 10) + 1;
+        boolean b = count(WeightedEnemy.class) < (Menu.score / 10) + 1;
         if (b)
             addObject(EnemyGenerator.getRandom(), getWidth() - 50, 50);
     }

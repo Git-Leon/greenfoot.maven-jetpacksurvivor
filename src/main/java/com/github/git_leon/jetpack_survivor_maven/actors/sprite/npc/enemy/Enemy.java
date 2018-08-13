@@ -4,16 +4,12 @@ import com.github.git_leon.jetpack_survivor_maven.actors.sprite.AnimatedSprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteCreatorRemover;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.SpriteSensorDecorator;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.items.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.Ally;
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.P1;
-import com.github.git_leon.jetpack_survivor_maven.physics.gravity.Gravity;
-import com.github.git_leon.jetpack_survivor_maven.physics.gravity.GravityInfluenceeInterface;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.ally.AllyInterface;
 
-public abstract class Enemy extends AnimatedSprite implements GravityInfluenceeInterface, EnemyInterface {
+public class Enemy  extends AnimatedSprite implements EnemyInterface {
     private final SpriteCreatorRemover spriteRemover;
-    protected final SpriteSensorDecorator<P1> spriteSensor;
-    private float verticalSpeed;
+    protected final SpriteSensorDecorator<Ally> spriteSensor;
 
     public Enemy(String basename, String suffix, int noOfImages) {
         super(basename, suffix, noOfImages);
@@ -23,33 +19,8 @@ public abstract class Enemy extends AnimatedSprite implements GravityInfluenceeI
 
     @Override
     public void postAnimationBehavior() {
-        applyGravity();
         moveLeft(1);
-        spriteRemover.destroy(getOneIntersectingObject(Ally.class));
+        spriteRemover.destroy(getOneIntersectingObject(AllyInterface.class));
         spriteRemover.destroy(Sprite::isAtEdge, this);
-    }
-
-    protected void applyGravity() {
-        Gravity.applyNormal(this);
-    }
-
-    @Override
-    public Float getVerticalSpeed() {
-        return verticalSpeed;
-    }
-
-    @Override
-    public void setVerticalSpeed(Float i) {
-        this.verticalSpeed = i;
-    }
-
-    @Override
-    public float getTerminalSpeed() {
-        return 3;
-    }
-
-    @Override
-    public boolean isOnGround() {
-        return getOneIntersectingObject(Platform.class) != null;
     }
 }

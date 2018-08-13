@@ -1,8 +1,8 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.enemies;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.Enemy;
+import com.github.git_leon.jetpack_survivor_maven.actors.sprite.npc.enemy.WeightedEnemy;
 
-public class FiendCrawler extends Enemy {
+public class FiendCrawler extends WeightedEnemy {
     public FiendCrawler() {
         super("npc/fiend_crawler/", ".png", 5);
     }
