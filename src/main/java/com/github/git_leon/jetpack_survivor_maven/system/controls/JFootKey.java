@@ -1179,15 +1179,13 @@ public enum JFootKey {
             BiConsumer<ArgType1, ArgType2> func,
             ArgType1 argType1,
             ArgType2 argType2) {
-        if (isKeyDown())
-            func.accept(argType1, argType2);
+        onKeyPress(() -> func.accept(argType1, argType2));
     }
 
     public <ArgType1> void onKeyPress(
             Consumer<ArgType1> func,
             ArgType1 arg1) {
-        if (isKeyDown())
-            func.accept(arg1);
+        onKeyPress(() -> func.accept(arg1));
     }
 
     public void onKeyPress(Runnable runnable) {
