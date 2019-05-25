@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.github.git_leon.jetpack_survivor_maven.system.application.properties.JFootPropertyType.*;
+import static com.github.git_leon.jetpack_survivor_maven.system.JFootPropertyType.*;
 
 public class JFootPropertyTest {
     private JFootProperty mock;

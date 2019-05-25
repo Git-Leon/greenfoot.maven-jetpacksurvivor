@@ -1,6 +1,5 @@
 package com.github.git_leon.jetpack_survivor_maven.system;
 
-import com.github.git_leon.jetpack_survivor_maven.system.application.properties.JFootPropertyType;
 import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
 
 import java.io.IOException;
@@ -8,7 +7,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
 
-import static com.github.git_leon.jetpack_survivor_maven.system.application.properties.JFootPropertyType.*;
+import static com.github.git_leon.jetpack_survivor_maven.system.JFootPropertyType.*;
 
 public class JFootProperty {
     private Properties properties;

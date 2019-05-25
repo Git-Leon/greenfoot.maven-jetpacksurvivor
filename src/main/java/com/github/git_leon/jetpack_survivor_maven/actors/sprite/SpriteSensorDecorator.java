@@ -1,61 +1,49 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.sprite;
 
+import com.github.git_leon.collectionutils.maps.InvertableMap;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
-public class SpriteSensorDecorator<SpriteSubType extends Sprite>
-        extends SpriteDecorator {
+public class SpriteSensorDecorator<SpriteSubType extends Sprite> {
 
+
+    private final Sprite sprite;
 
     public SpriteSensorDecorator(Sprite sprite) {
-        super(sprite);
+        this.sprite = sprite;
     }
 
 
     public void faceSprite(SpriteSubType obj) {
         if (obj != null) {
-            int deltaX = obj.getX() - getX();
-            int deltaY = obj.getY() - getY();
-            setRotation((int) (180 * Math.atan2(deltaY, deltaX) / Math.PI));
-        } else {
-            return;
+            int deltaX = obj.getX() - sprite.getX();
+            int deltaY = obj.getY() - sprite.getY();
+            sprite.setRotation((int) (180 * Math.atan2(deltaY, deltaX) / Math.PI));
         }
     }
 
 
-    public void faceNearest(Class<SpriteSubType> cls, int radius) {
-        SpriteSubType actor = getNearest(cls, radius);
-        faceSprite(actor);
+    public void faceNearest(Class<SpriteSubType> cls) {
+        faceSprite(getNearest(cls));
     }
 
-    public SpriteSubType getNearest(Class<SpriteSubType> cls, int radius) {
-        List<SpriteSubType> actors = this.getWorld().getObjects(cls);
+    public SpriteSubType getNearest(Class<SpriteSubType> cls) {
+        List<SpriteSubType> actors = sprite.getWorld().getObjects(cls);
         // TODO - Test below implementation
-//        Map<SpriteSubType, Double> distanceMap = new HashMap<>();
-//        actors.forEach(actor -> distanceMap.put(actor, getDistance(actor));
-//        return new TreeSet<>(distanceMap.keySet()).pollFirst();
-        SpriteSubType nearestActor = null;
-        Double nearestDistance = null;
-        double distance;
-        int size = actors.size();
-        for (int i = 0; i < size; i++) {
-            distance = getDistance(actors.get(i));
-            if (i == 0) {
-                nearestDistance = distance;
-            }
-            if (distance < nearestDistance) {
-                nearestActor = actors.get(i);
-                nearestDistance = distance;
-            }
-        }
-        return nearestActor;
+        InvertableMap<SpriteSubType, Double> distanceMap = new InvertableMap<>();
+        actors.forEach(actor -> distanceMap.put(actor, getDistance(actor)));
+        return distanceMap.invertMap().get(new TreeSet<>(distanceMap.values()).pollFirst());
     }
 
     public List<SpriteSubType> getObjectsInRange(Class<SpriteSubType> cls, int radius) {
-        return getObjectsInRange(cls, radius);
+        return null;
     }
 
     public double getDistance(SpriteSubType actor) {
-        return Math.hypot(actor.getX() - getX(), actor.getY() - getY());
+        return Math.hypot(actor.getX() - sprite.getX(), actor.getY() - sprite.getY());
     }
 
 
@@ -68,8 +56,8 @@ public class SpriteSensorDecorator<SpriteSubType extends Sprite>
     }
 
     public SpriteSubType getCollidingObjectInFront(Class<SpriteSubType> cls) {
-        int imageWidth = (this.getImage().getWidth());
-        int imageHeight = (this.getImage().getHeight());
+        int imageWidth = (sprite.getImage().getWidth());
+        int imageHeight = (sprite.getImage().getHeight());
         int offset = imageWidth > imageHeight ? imageWidth : imageHeight;
 
         return getCollidingObjectInFront(cls, offset / 2);
@@ -80,8 +68,8 @@ public class SpriteSensorDecorator<SpriteSubType extends Sprite>
     }
 
     public SpriteSubType getCollidingObjectInFront(Class<SpriteSubType> cls, int xOffset, int yOffset) {
-        int deltaX = (int) Math.round((Math.cos(getRotation() * Math.PI / 180)));
-        int deltaY = (int) Math.round((Math.sin(getRotation() * Math.PI / 180)));
+        int deltaX = (int) Math.round((Math.cos(sprite.getRotation() * Math.PI / 180)));
+        int deltaY = (int) Math.round((Math.sin(sprite.getRotation() * Math.PI / 180)));
         int x = xOffset * deltaX;
         int y = yOffset * deltaY;
         SpriteSubType actor = this.getOneObjectAtOffset(x, y, cls);
@@ -95,7 +83,7 @@ public class SpriteSensorDecorator<SpriteSubType extends Sprite>
     }
 
     public List<SpriteSubType> getObjects(Class<SpriteSubType> cls) {
-        return this.getWorld().getObjects(cls);
+        return sprite.getWorld().getObjects(cls);
     }
 
 }

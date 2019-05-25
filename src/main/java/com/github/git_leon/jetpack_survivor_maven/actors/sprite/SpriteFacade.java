@@ -8,7 +8,7 @@ import greenfoot.GreenfootImage;
  * The purpose of this class is to model invisible sprite decorations;
  * i.e. - sensors
  */
-public class SpriteFacade implements SpriteWrapper  {
+public class SpriteFacade implements SpriteWrapper {
     protected final Sprite sprite;
 
     public SpriteFacade(Sprite sprite) {
@@ -76,8 +76,28 @@ public class SpriteFacade implements SpriteWrapper  {
     }
 
     @Override
+    public void moveLeft(int xOffset) {
+        sprite.moveLeft(xOffset);
+    }
+
+    @Override
+    public void moveRight(int xOffset) {
+        sprite.moveRight(xOffset);
+    }
+
+    @Override
+    public void moveUp(int yOffset) {
+        sprite.moveUp(yOffset);
+    }
+
+    @Override
+    public void moveDown(int yOffset) {
+        sprite.moveDown(yOffset);
+    }
+
+    @Override
     public Sprite getOneObjectAtOffset(int x, int y, Class cls) {
-        return sprite.getOneObjectAtOffset(x,y,cls);
+        return sprite.getOneObjectAtOffset(x, y, cls);
     }
 
     @Override

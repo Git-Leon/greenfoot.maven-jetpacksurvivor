@@ -6,7 +6,7 @@ public class InvisibleSprite extends Sprite {
     public InvisibleSprite() {
         super("invisible.png");
         GreenfootImage image = getImage();
-        image.scale(0, 0);
+        image.scale(1, 1);
         setImage(image);
     }
 

@@ -17,10 +17,10 @@ public abstract class Sprite extends Actor implements SpriteInterface {
         this(new String[]{imageName});
     }
 
-    public Sprite(String... imageNames) {
+    public Sprite(String[] imageNames) {
         this.imageList = new ArrayList<>();
-        List<String> imageNameList = Arrays.asList(imageNames);
-        imageNameList.forEach(imageName -> this.imageList.add(new GreenfootImage(imageName)));
+        List<String> imageNameList = new ArrayList<>(Arrays.asList(imageNames));
+        imageNameList.forEach(image -> this.imageList.add(new GreenfootImage(image)));
         setImage(imageList.get(0));
     }
 
@@ -37,6 +37,26 @@ public abstract class Sprite extends Actor implements SpriteInterface {
         setImage(imageList.get(0));
     }
 
+    public Sprite(GreenfootImage image) {
+        this(Arrays.asList(image));
+    }
+
+    public void moveLeft(int xOffset) {
+        setLocation(getX() - xOffset, getY());
+    }
+
+    public void moveRight(int xOffset) {
+        moveLeft(-xOffset);
+    }
+
+    public void moveUp(int yOffset) {
+        setLocation(getX(), getY()-yOffset);
+    }
+
+    public void moveDown(int yOffset) {
+        moveUp(-yOffset);
+    }
+
     @Override
     public Sprite getOneObjectAtOffset(int x, int y, Class cls) {
         return (Sprite) super.getOneObjectAtOffset(x, y, cls);
@@ -48,7 +68,15 @@ public abstract class Sprite extends Actor implements SpriteInterface {
     }
 
     @Override
-    protected final Sprite getOneIntersectingObject(Class<?> cls) {
+    public final Sprite getOneIntersectingObject(Class<?> cls) {
         return (Sprite) super.getOneIntersectingObject(cls);
+    }
+
+    public void setLocation(SpriteInterface actor) {
+        setLocation(actor.getX(), actor.getY());
+    }
+
+    public boolean isAddedToWorld() {
+        return getWorld() != null;
     }
 }
