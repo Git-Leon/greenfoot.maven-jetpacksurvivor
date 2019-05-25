@@ -11,8 +11,7 @@ public abstract class SpriteWorld extends World {
         init();
     }
 
-    protected void init() {
-    }
+    abstract protected void init();
 
     public static <SpriteSubType extends Sprite> List<SpriteSubType> getSprites(World world, Class<SpriteSubType> cls) {
         return world.getObjects(cls);

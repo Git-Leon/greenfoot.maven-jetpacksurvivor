@@ -1,8 +1,6 @@
 package com.github.git_leon.jetpack_survivor_maven.system;
 
 import bluej.Config;
-import com.github.git_leon.jetpack_survivor_maven.system.view.JFootFrame;
-import com.github.git_leon.jetpack_survivor_maven.system.view.JFootFrameBuilder;
 import com.github.git_leon.jetpack_survivor_maven.utils.exceptions.JFootError;
 import greenfoot.Greenfoot;
 import greenfoot.export.GreenfootScenarioMain;
