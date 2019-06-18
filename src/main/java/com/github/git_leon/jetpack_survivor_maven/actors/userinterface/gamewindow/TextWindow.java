@@ -1,7 +1,7 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.userinterface.gamewindow;
 
-import com.github.git_leon.jetpack_survivor_maven.actors.sprite.Sprite;
-import com.github.git_leon.jetpack_survivor_maven.utils.JFootTextImageBuilder;
+import com.github.git_leon.jfoot.sprite.Sprite;
+import com.github.git_leon.jfoot.resources.JFootTextImageBuilder;
 import greenfoot.Color;
 
 public class TextWindow extends Sprite {

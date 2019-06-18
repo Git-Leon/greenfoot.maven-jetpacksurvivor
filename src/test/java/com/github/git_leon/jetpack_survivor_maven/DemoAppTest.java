@@ -1,6 +1,6 @@
 package com.github.git_leon.jetpack_survivor_maven;
 
-import com.github.git_leon.jetpack_survivor_maven.system.JFootApplication;
+import com.github.git_leon.jfoot.system.JFootApplication;
 import com.github.git_leon.jetpack_survivor_maven.worlds.MockSpriteWorld;
 import greenfoot.Greenfoot;
 import greenfoot.core.WorldHandler;

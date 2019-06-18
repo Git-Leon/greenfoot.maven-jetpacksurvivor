@@ -1,19 +1,17 @@
-package com.github.git_leon.jetpack_survivor_maven.worlds;
+package com.github.git_leon.jfoot.world;
 
 import com.github.git_leon.jetpack_survivor_maven.actors.Platform;
 import com.github.git_leon.jfoot.sprite.npc.ally.P1;
 import com.github.git_leon.jfoot.sprite.npc.ally.P1Partner;
 import com.github.git_leon.jfoot.sprite.npc.enemy.EnemyMaterializer;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.gamewindow.GameOverWindow;
-import com.github.git_leon.jfoot.world.SpriteWorld;
 
-public class MockSpriteWorld extends SpriteWorld {
+public class SubSpriteWorld extends SpriteWorld {
     private P1 p1;
 
-    public MockSpriteWorld(int worldWidth, int worldHeight, int cellSize) {
-        super(worldWidth, worldHeight, cellSize);
+    public SubSpriteWorld() {
+        super(800, 300, 1);
     }
-
 
     @Override
     public void init() {
@@ -23,7 +21,6 @@ public class MockSpriteWorld extends SpriteWorld {
         addObject(new EnemyMaterializer(1F), getWidth() - 40, 60);
         addObject(new P1Partner(), 0, 0);
     }
-
 
     @Override
     public void act() {
@@ -39,6 +36,4 @@ public class MockSpriteWorld extends SpriteWorld {
             addObject(platform, i * xOffset, getHeight());
         }
     }
-
-
 }

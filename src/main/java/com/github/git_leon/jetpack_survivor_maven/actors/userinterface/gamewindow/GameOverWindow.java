@@ -1,8 +1,8 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.userinterface.gamewindow;
 
-import com.github.git_leon.jetpack_survivor_maven.system.controls.JFootKey;
-import com.github.git_leon.jetpack_survivor_maven.utils.JFootTextImageBuilder;
-import com.github.git_leon.jetpack_survivor_maven.worlds.SubSpriteWorld;
+import com.github.git_leon.jfoot.system.controls.JFootKey;
+import com.github.git_leon.jfoot.resources.JFootTextImageBuilder;
+import com.github.git_leon.jfoot.world.SubSpriteWorld;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 

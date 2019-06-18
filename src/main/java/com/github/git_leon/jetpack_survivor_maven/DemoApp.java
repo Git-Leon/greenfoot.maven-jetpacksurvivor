@@ -1,7 +1,6 @@
 package com.github.git_leon.jetpack_survivor_maven;
 
-import com.github.git_leon.jetpack_survivor_maven.system.JFootApplication;
-import greenfoot.core.Simulation;
+import com.github.git_leon.jfoot.system.JFootApplication;
 
 import java.io.IOException;
 import java.util.Arrays;
