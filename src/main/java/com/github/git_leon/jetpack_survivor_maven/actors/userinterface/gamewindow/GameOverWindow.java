@@ -1,8 +1,8 @@
 package com.github.git_leon.jetpack_survivor_maven.actors.userinterface.gamewindow;
 
-import com.github.git_leon.jfoot.system.controls.JFootKey;
 import com.github.git_leon.jfoot.resources.JFootTextImageBuilder;
-import com.github.git_leon.jfoot.world.SubSpriteWorld;
+import com.github.git_leon.jfoot.system.controls.JFootKey;
+import com.github.git_leon.jfoot.world.EmptyWorld;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 
@@ -18,6 +18,6 @@ public class GameOverWindow extends TextWindow {
 
     @Override
     public void act() {
-        JFootKey.SPACE.onKeyPress(Greenfoot::setWorld, new SubSpriteWorld());
+        JFootKey.SPACE.onKeyPress(Greenfoot::setWorld, new EmptyWorld());
     }
 }

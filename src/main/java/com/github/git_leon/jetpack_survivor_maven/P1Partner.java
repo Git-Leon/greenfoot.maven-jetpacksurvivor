@@ -1,9 +1,10 @@
-package com.github.git_leon.jfoot.sprite.npc.ally;
+package com.github.git_leon.jetpack_survivor_maven;
 
 import com.github.git_leon.jfoot.sprite.AnimatedSprite;
 import com.github.git_leon.jfoot.sprite.SpriteSensorDecorator;
 import com.github.git_leon.jfoot.sprite.items.weapon.range.FullyAutomaticGun;
 import com.github.git_leon.jfoot.sprite.items.weapon.projectile.Projectile;
+import com.github.git_leon.jfoot.sprite.npc.ally.AllyInterface;
 import com.github.git_leon.jfoot.sprite.npc.enemy.WeightedEnemy;
 import com.github.git_leon.jfoot.system.controls.JFootKey;
 

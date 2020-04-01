@@ -1,4 +1,4 @@
-package com.github.git_leon.jfoot.sprite.npc.ally;
+package com.github.git_leon.jetpack_survivor_maven;
 
 import com.github.git_leon.jfoot.sprite.AnimatedSprite;
 import com.github.git_leon.jfoot.sprite.SpriteCreatorRemover;
@@ -7,6 +7,7 @@ import com.github.git_leon.jetpack_survivor_maven.actors.Platform;
 import com.github.git_leon.jetpack_survivor_maven.actors.Rocket;
 import com.github.git_leon.jfoot.sprite.items.weapon.range.HandGun;
 import com.github.git_leon.jetpack_survivor_maven.actors.userinterface.gamewindow.PauseWindow;
+import com.github.git_leon.jfoot.sprite.npc.ally.AllyInterface;
 import com.github.git_leon.jfoot.sprite.physics.gravity.Gravity;
 import com.github.git_leon.jfoot.sprite.physics.gravity.GravityInfluenceeInterface;
 import com.github.git_leon.jfoot.system.controls.JFootKey;
@@ -17,6 +18,7 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Al
     private Rocket rocket;
     private int runSpeed;
     private float verticalSpeed;
+    private boolean flippedHorizontally;
 
     public P1() {
         super("player/walk/walk", ".png", 6);
@@ -44,13 +46,13 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Al
     }
 
     @Override
-    public Float getVerticalSpeed() {
-        return verticalSpeed;
+    public Double getVerticalSpeed() {
+        return Double.valueOf(verticalSpeed);
     }
 
     @Override
-    public void setVerticalSpeed(Float i) {
-        verticalSpeed = i;
+    public void setVerticalSpeed(Double aDouble) {
+
     }
 
     @Override
@@ -66,7 +68,7 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Al
     @Override
     public void moveRight(int xOffset) {
         super.moveRight(xOffset);
-        if (!super.flippedHorizontally) {
+        if (!this.flippedHorizontally) {
             flipImagesHorizontally();
         }
     }
@@ -74,7 +76,7 @@ public class P1 extends AnimatedSprite implements GravityInfluenceeInterface, Al
     @Override
     public void moveLeft(int xOffset) {
         super.moveLeft(xOffset);
-        if (super.flippedHorizontally) {
+        if (this.flippedHorizontally) {
             flipImagesHorizontally();
         }
     }

@@ -1,4 +1,4 @@
-package com.github.git_leon.jfoot.sprite.npc.enemy;
+package com.github.git_leon.jetpack_survivor_maven;
 
 import com.github.git_leon.RandomUtils;
 import com.github.git_leon.jfoot.sprite.InvisibleSprite;
